@@ -74,3 +74,16 @@
       (is (= "(if (seq prompt) prompt ; keep this note\n  fallback)" source))
       (is (= :if/seq-not-empty-or (:rule-id (first findings))))
       (is (false? (:applied? (first findings)))))))
+
+(deftest metadata-bearing-seq-test-stays-as-suggestion
+  (testing "metadata in rewritten branches is preserved by declining autofix"
+    (let [source "(if (seq visible) (for [entry visible] ^{:key (:id entry)} [row entry]) [:p])"
+          {:keys [source findings]}
+          (rewrite/rewrite-string source
+                                  {:file "sample.cljs"
+                                   :mode :fix
+                                   :aggressive? true})]
+      (is (= "(if (seq visible) (for [entry visible] ^{:key (:id entry)} [row entry]) [:p])"
+             source))
+      (is (= :if/seq-if-let (:rule-id (first findings))))
+      (is (false? (:applied? (first findings)))))))
