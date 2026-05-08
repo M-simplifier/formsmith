@@ -1,5 +1,6 @@
 (ns formsmith.rules.cond-minimal
-  (:require [formsmith.finding :as finding]
+  (:require [clojure.string :as str]
+            [formsmith.finding :as finding]
             [formsmith.rules.helpers :as helpers]
             [rewrite-clj.zip :as z]))
 
@@ -29,6 +30,9 @@
 
         :else nil))))
 
+(defn- clean-head-separator [source]
+  (str/replace source #"^[ \t]+(\r?\n)" "$1"))
+
 (defn- rewritten-source [zloc {:keys [kind head-loc test-loc expr-loc catchall-loc else-loc]}]
   (let [outer-source (helpers/node-string zloc)
         head-source (helpers/node-string head-loc)
@@ -37,7 +41,8 @@
         head-index (helpers/find-substring-index outer-source head-source 1)
         test-index (helpers/find-substring-index outer-source test-source (+ head-index (count head-source)))
         expr-index (helpers/find-substring-index outer-source expr-source (+ test-index (count test-source)))
-        between-head-test (subs outer-source (+ head-index (count head-source)) test-index)
+        between-head-test (clean-head-separator
+                           (subs outer-source (+ head-index (count head-source)) test-index))
         between-test-expr (subs outer-source (+ test-index (count test-source)) expr-index)]
     (case kind
       :single-clause-when
@@ -53,13 +58,13 @@
             else-source (helpers/node-string else-loc)
             catchall-index (helpers/find-substring-index outer-source catchall-source (+ expr-index (count expr-source)))
             else-index (helpers/find-substring-index outer-source else-source (+ catchall-index (count catchall-source)))
-            between-catchall-else (subs outer-source (+ catchall-index (count catchall-source)) else-index)]
+            between-expr-catchall (subs outer-source (+ expr-index (count expr-source)) catchall-index)]
         (str "(if"
              between-head-test
              test-source
              between-test-expr
              expr-source
-             between-catchall-else
+             between-expr-catchall
              else-source
              (subs outer-source (+ else-index (count else-source))))))))
 
