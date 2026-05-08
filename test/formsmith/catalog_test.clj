@@ -22,6 +22,9 @@
       (is (some #(and (= :condition/negated-form (:id %))
                       (= :standard-canonical-fix (:tier %)))
                 summaries))
+      (is (some #(and (= :nil/predicate (:id %))
+                      (= :standard-canonical-fix (:tier %)))
+                summaries))
       (is (some #(= :if/seq-test (:id %)) summaries))
       (is (some #(= :when/seq-test (:id %)) summaries)))))
 

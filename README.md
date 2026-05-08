@@ -215,6 +215,7 @@ Current rule families include:
 
 - redundant wrappers: `redundant-do`, nested `let`, redundant `str`
 - conditional cleanup: `when-not`, `if-not`, `cond -> if/when`, `cond true -> :else`
+- nil predicates: `= nil` -> `nil?`, `not= nil` -> `some?`
 - emptiness and blankness: `seq`, `not-empty`, `blank?`
 - CLJS-facing local patterns around frontend form and collection checks
 

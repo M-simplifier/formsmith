@@ -14,6 +14,7 @@
             [formsmith.rules.if-do-test]
             [formsmith.rules.if-nil-test]
             [formsmith.rules.negated-condition-test]
+            [formsmith.rules.nil-predicate-test]
             [formsmith.rules.nested-let-test]
             [formsmith.rules.redundant-do-test]
             [formsmith.rules.redundant-str-test]
@@ -38,6 +39,7 @@
                                           'formsmith.rules.if-do-test
                                           'formsmith.rules.if-nil-test
                                           'formsmith.rules.negated-condition-test
+                                          'formsmith.rules.nil-predicate-test
                                           'formsmith.rules.nested-let-test
                                           'formsmith.rules.redundant-do-test
                                           'formsmith.rules.redundant-str-test

@@ -8,6 +8,7 @@
             [formsmith.rules.if-do :as if-do]
             [formsmith.rules.if-nil :as if-nil]
             [formsmith.rules.negated-condition :as negated-condition]
+            [formsmith.rules.nil-predicate :as nil-predicate]
             [formsmith.rules.nested-let :as nested-let]
             [formsmith.rules.redundant-str :as redundant-str]
             [formsmith.rules.redundant-do :as redundant-do]
@@ -23,6 +24,7 @@
    nested-let/rule
    if-do/rule
    if-nil/rule
+   nil-predicate/rule
    cond-else/rule
    cond-minimal/rule
    negated-condition/rule
