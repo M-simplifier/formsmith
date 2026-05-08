@@ -1,0 +1,25 @@
+# Review Study Records
+
+This directory is for completed public review-elimination study records.
+
+Use `template.md` when adding a new record. A record should be committed only
+when the public evidence is reproducible from URLs and the study does not rely
+on private chat, local screenshots, or maintainer memory.
+
+Verify a completed record with:
+
+```bash
+REVIEW_STUDY=docs/review-studies/<record>.md bb verify-review-study
+```
+
+The verifier checks structure, required classification labels, public GitHub
+evidence links, and placeholder removal. It does not decide whether the study is
+strong enough for L5 by itself.
+
+Current records:
+
+- [`clj-ops-ledger-2026-05-08.md`](./clj-ops-ledger-2026-05-08.md)
+  Controlled public adopter; adoption evidence exists, review-elimination
+  evidence does not.
+- [`formsmith-pressure-app-2026-05-08.md`](./formsmith-pressure-app-2026-05-08.md)
+  Maintainer pressure project; useful CI pressure, not independent adoption.

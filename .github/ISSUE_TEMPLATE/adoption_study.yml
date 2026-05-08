@@ -1,0 +1,47 @@
+name: Adoption or review study
+description: Share a public Formsmith adoption or review-elimination study.
+title: "Study: "
+labels: ["adoption-study"]
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      description: Public repository URL.
+      placeholder: "https://github.com/org/repo"
+    validations:
+      required: true
+  - type: dropdown
+    id: ownership
+    attributes:
+      label: Ownership
+      options:
+        - "Independent"
+        - "Controlled adopter"
+        - "Maintainer pressure project"
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public evidence
+      description: Link the adoption PR, PR CI, main CI, and any review sample PRs.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: findings
+    attributes:
+      label: Finding summary
+      description: Include before/after files, changed files, findings, suppressions, and false positives.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: review-impact
+    attributes:
+      label: Review impact
+      description: Classify review comments using eliminated-by-formsmith, missed-covered-rule, false-positive, accepted-suppression, out-of-scope, and unclear.
+      render: text
+    validations:
+      required: true

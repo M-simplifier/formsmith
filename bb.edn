@@ -29,6 +29,11 @@
                :task (shell "bash" "scripts/open-source-field-trial.sh")}
   summarize-field-trial {:doc "Summarize existing field-trial reports"
                          :task (shell "bash" "scripts/summarize-field-trial.sh")}
+  verify-review-study {:doc "Verify a completed review-elimination study record; set REVIEW_STUDY=path"
+                       :task (let [path (System/getenv "REVIEW_STUDY")]
+                               (when-not path
+                                 (throw (ex-info "Set REVIEW_STUDY=docs/review-studies/<record>.md" {})))
+                               (shell "bash" "scripts/verify-review-study.sh" path))}
   test {:doc "Run tests"
         :task (shell "clojure -M:test")}
   ci {:doc "Run the local CI set"

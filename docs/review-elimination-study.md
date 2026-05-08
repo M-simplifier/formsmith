@@ -58,6 +58,13 @@ A valid public study packet records:
 | classification | counts by the taxonomy below |
 | failures | semantic regressions, rejected fixes, or CI failures |
 
+Use [`docs/review-studies/template.md`](./review-studies/template.md) for new
+records. Completed records can be checked with:
+
+```bash
+REVIEW_STUDY=docs/review-studies/<record>.md bb verify-review-study
+```
+
 ## Classification
 
 Every relevant review comment in the sample should be classified as one of:
