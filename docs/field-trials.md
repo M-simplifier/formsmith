@@ -1,0 +1,70 @@
+# Field Trials
+
+## Purpose
+
+Field trials are public outside-pressure runs against open-source Clojure and
+ClojureScript repositories that are not part of Formsmith.
+
+They answer a narrower question than adoption:
+
+> can Formsmith parse realistic public Clojure code, avoid crashing on source
+> forms such as reader conditionals and reader discards, and produce measurable
+> rewrite-only signal?
+
+They do not prove that upstream maintainers accepted the rewrites. They are
+outside pressure and false-positive discovery input, not independent adoption.
+
+## Reproducible Command
+
+Run the pinned trial set with:
+
+```bash
+bash scripts/open-source-field-trial.sh
+```
+
+The script clones each target at the pinned commit into `target/field-trials`,
+runs:
+
+```bash
+clojure -M -m formsmith.main fix --check --rewrite-only <paths...>
+```
+
+and writes per-repo output under `target/field-trials/reports/`.
+
+## 2026-05-08 Open-Source Matrix
+
+These runs used the `v0.1.0-pre.4` code surface. `changed` means files that the
+default rewrite-only preview would change.
+
+| Repository | Pinned commit | Paths | Files | Changed | Findings | Notes |
+| --- | --- | --- | ---: | ---: | ---: | --- |
+| `metosin/reitit` | `106fc4c7a09290c8e2df2d4ef9570ea1322ab2ab` | `modules examples test` | 221 | 14 | 48 | heavy `nil/eq` signal in tests plus keyword lookup |
+| `metosin/malli` | `a74e3b45efa30b3bcdb2e997f337c71614eba3c5` | `src test app` | 84 | 11 | 35 | reader-sensitive forms no longer crash |
+| `lambdaisland/kaocha` | `8846f91c9bf4338c561ffb866b5a8890e22889cd` | `src test examples` | 93 | 5 | 5 | conditional cleanup in source files |
+| `day8/re-frame` | `1a1bf1df6570b17a148ebce70d500ec2da393cdc` | `src test examples` | 68 | 6 | 6 | CLJ and CLJS findings |
+| `day8/re-frame-10x` | `a3c309430d9e24456b4760f125133abbffc9bdfa` | `src test examples` | 85 | 9 | 17 | CLJS-heavy keyword lookup and redundant string signal |
+| `jacekschae/conduit` | `ae3c15df1b76d3e0157e32ae24bae52bdb7ea365` | `src test` | 8 | 1 | 1 | re-frame app; keyword lookup |
+| `prestancedesign/pingcrm-clojure` | `3ec40f5cf018fe1485debba94a5ebb70ea1a0e04` | `src dev` | 37 | 0 | 0 | rewrite-only clean; format-only signal exists |
+| `prestancedesign/usermanager-reitit-example` | `887df38f6635083e2e705cdad010c59231bab37f` | `src dev` | 5 | 0 | 0 | rewrite-only clean |
+
+## What This Proves
+
+- the current parser and rewrite traversal survive reader discards and reader
+  conditionals in large public codebases
+- default rewrite-only signal appears across routing, schema, test, and CLJS UI
+  repositories
+- zero-finding runs are recorded instead of hidden, so the matrix is not only a
+  cherry-picked hit list
+
+## What This Does Not Prove
+
+- upstream maintainer acceptance
+- independent CI adoption
+- package distribution maturity
+- review-comment elimination across real teams
+
+## Current Read
+
+This matrix moves Formsmith from only maintainer-controlled pressure evidence
+toward broader public outside-pressure evidence. It still does not replace
+independent public adoptions.
