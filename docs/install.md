@@ -16,8 +16,8 @@ Add a `:formsmith` alias to the target repository:
  {:formsmith
   {:extra-deps {io.github.M-simplifier/formsmith
                 {:git/url "https://github.com/M-simplifier/formsmith.git"
-                 :git/tag "v0.1.0-pre.2"
-                 :git/sha "9b1b4fdca1a045ef79495ce7e94106b570f00368"}}
+                 :git/tag "v0.1.0-pre.3"
+                 :git/sha "9649e96a0f60c585d9f68608648f63839f5395af"}}
    :main-opts ["-m" "formsmith.main"]}}}
 ```
 
