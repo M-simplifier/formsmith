@@ -1,0 +1,15 @@
+(ns framework-profile-demo.mobile
+  (:require ["package:flutter/material.dart" :as m]
+            [cljd.flutter :as f]))
+
+(defn fab [open toggle]
+  (m/IgnorePointer
+    .ignoring (boolean @open)
+    .child
+    (m/AnimatedContainer
+      .duration (m/Duration .milliseconds 250)
+      .child
+      (m/FloatingActionButton
+        .onPressed toggle
+        .child
+        (m/Icon m.Icons/create)))))

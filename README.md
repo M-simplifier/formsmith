@@ -12,7 +12,7 @@ Current `v1` scope is deliberately narrow:
 
 - config-free by default
 - conservative autofix first
-- CLJ and CLJS local style coverage
+- CLJ, CLJS, and initial ClojureDart local style coverage
 - `clj-kondo` findings on the same lint surface when desired
 
 The current milestone question is:
@@ -70,6 +70,8 @@ clojure -M -m formsmith.main fix --check --guarded .
 clojure -M -m formsmith.main fix .
 clojure -M -m formsmith.main fix --aggressive .
 clojure -M -m formsmith.main baseline src test -o .formsmith-baseline.edn
+clojure -M -m formsmith.main profiles src test
+clojure -M -m formsmith.main contracts src test
 ```
 
 For another repo, add a `:formsmith` alias that consumes the GitHub source
@@ -94,6 +96,13 @@ Maintainers can verify that repo-only path from a fresh disposable workspace cop
 ```bash
 bb validate-cold-start
 ```
+
+Framework-aware output is currently informational, except for narrow local
+rewrites with explicit guards. The current profile surface includes re-frame,
+Reagent, HSX, RFX, ClojureDart, Ring, Reitit, Integrant, and Malli. ClojureDart
+support includes `.cljd` files, Flutter string-package requires, and the first
+visible Flutter UI rewrite from nested `.child` chains to `cljd.flutter/nest`.
+See [framework profiles](./docs/framework-profiles.md).
 
 ## Recommended Workflow
 

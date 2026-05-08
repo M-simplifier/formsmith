@@ -29,6 +29,8 @@ The second category matters because a style rewrite tool does not earn trust by 
 - chained cases where more than one rewrite should fire
 - comment-bearing forms that should currently stay suggestion-only for safety
 - semantic rewrites that should only auto-apply in aggressive mode
+- ClojureDart `.cljd` Flutter UI chains that should normalize to
+  `cljd.flutter/nest`
 
 Over time this corpus should grow toward real-world anti-pattern shelves rather than a flat pile of random samples.
 
@@ -38,5 +40,7 @@ Over time this corpus should grow toward real-world anti-pattern shelves rather 
 - `corpus/ugly`: intentionally awkward but human-plausible code that should clean up well
 - `corpus/aggressive`: semantic-pattern rewrites that require `fix --aggressive`
 - `corpus/protected`: cases that are still style-smelly but should remain unchanged until patch quality improves
+- `corpus/clojuredart`: ClojureDart-specific UI style fixtures where `.cljd`
+  source must remain parseable and visibly cleaner after the rewrite
 
 Current examples in `protected` also include macro-step contexts where a local rewrite would be valid as an expression but invalid in the surrounding macro contract.

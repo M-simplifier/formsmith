@@ -18,14 +18,15 @@
     (->> (file-seq root)
          (filter #(.isFile %))
          (map #(.getPath %))
-         (filter #(str/ends-with? % ".before.clj"))
+         (filter #(or (str/ends-with? % ".before.clj")
+                      (str/ends-with? % ".before.cljd")))
          sort
          (mapv (fn [before]
                  {:name (-> before
                             (str/replace #"^corpus/" "")
-                            (str/replace #"\.before\.clj$" ""))
+                            (str/replace #"\.before\.cljd?$" ""))
                   :before before
-                  :after (str/replace before #"\.before\.clj$" ".after.clj")})))))
+                  :after (str/replace before #"\.before\.(clj|cljd)$" ".after.$1")})))))
 
 (deftest corpus-golden-tests
   (doseq [{:keys [name before after]} (corpus-pairs)]

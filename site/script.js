@@ -36,16 +36,39 @@ const demos = {
 blocked-by=nil semantics can differ
 llm-task=Inspect the surrounding code and decide whether blank? preserves the intended behavior.`
   },
+  cljd: {
+    beforeFile: "src/mobile.cljd",
+    afterFile: "Flutter UI rewrite",
+    command: "clojure -M -m formsmith.main fix --check --rewrite-only src/mobile.cljd",
+    before: `(m/IgnorePointer
+  .ignoring disabled?
+  .child
+  (m/AnimatedContainer
+    .duration duration
+    .child
+    (m/FloatingActionButton
+      .onPressed submit
+      .child
+      (m/Icon m/Icons.create))))`,
+    after: `(f/nest
+  (m/IgnorePointer .ignoring disabled?)
+  (m/AnimatedContainer .duration duration)
+  (m/FloatingActionButton .onPressed submit)
+  (m/Icon m/Icons.create))`
+  },
   profiles: {
     beforeFile: "src/app/ui.cljs",
     afterFile: "framework profile output",
     command: "clojure -M -m formsmith.main profiles src",
-    before: `(ns app.ui
-  (:require [re-frame.core :as rf]
-            [reagent.core :as r]))`,
-    after: `re-frame (re-frame) category=cljs-state evidence=1
-Reagent (reagent) category=cljs-view evidence=1
-frameworks=2`
+    before: `(ns app.mobile
+  (:require ["package:flutter/material.dart" :as m]
+            [cljd.flutter :as f]
+            [io.factorhouse.hsx.core :as hsx]
+            [io.factorhouse.rfx.core :as rfx]))`,
+    after: `ClojureDart (clojuredart) category=mobile-ui evidence=2
+HSX (hsx) category=cljs-view evidence=1
+RFX (rfx) category=cljs-state evidence=1
+frameworks=3`
   }
 };
 

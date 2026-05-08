@@ -169,10 +169,17 @@ clojure -M -m formsmith.main profiles src test
 clojure -M -m formsmith.main profiles --json src test
 ```
 
-Profiles detect known framework surfaces such as re-frame, Reagent, Ring,
-Reitit, Integrant, and Malli from namespace facts. The output is informational:
-it names the active framework profiles and their initial canonical guidance, but
-does not yet enforce framework-level refactors.
+Profiles detect known framework surfaces such as re-frame, Reagent, HSX, RFX,
+ClojureDart, Ring, Reitit, Integrant, and Malli from namespace facts. The
+output is informational: it names the active framework profiles and their
+initial canonical guidance.
+
+ClojureDart support also includes `.cljd` scanning, string-package requires,
+and the first visible Flutter UI rewrite from nested `.child` chains to
+`cljd.flutter/nest` when the current Flutter helper alias is explicit.
+
+See [framework profiles](./framework-profiles.md) for the current profile and
+contract surface.
 
 ## Recommended Daily Loop
 

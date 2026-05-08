@@ -1,0 +1,10 @@
+(ns corpus.clojuredart.widget-child-chain
+  (:require ["package:flutter/material.dart" :as m]
+            [cljd.flutter :as f]))
+
+(defn fab [open toggle]
+  (f/nest
+   (m/IgnorePointer .ignoring (boolean @open))
+   (m/AnimatedContainer .duration (m/Duration .milliseconds 250))
+   (m/FloatingActionButton .onPressed toggle)
+   (m/Icon m.Icons/create)))
