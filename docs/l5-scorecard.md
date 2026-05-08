@@ -39,7 +39,7 @@ Do not claim L5 until all of these are true:
 
 ## Next External Gate
 
-The next step toward L4/L5 is an independent adoption PR packet against a small
-public repository with a low-risk finding. `conduit` and `kaocha` are plausible
-first targets because the field-trial output is small enough for maintainers to
-inspect.
+The next step toward L4/L5 is an independent adoption or maintainer-adjudication
+packet against a public repository with low-risk findings that a maintainer can
+inspect. Target selection is maintainer-operated; public evidence should be
+recorded only after an upstream action is opened or completed.
