@@ -64,8 +64,9 @@ If you want to help, open an issue with:
 
 ## Distribution Posture
 
-`formsmith` is repo-first for now.
+`formsmith` is source-distributed while it is pre-beta.
 
-- run it from source
-- treat package distribution as a later milestone
-- do not document install/distribution flows that the repo does not actually support yet
+- use the GitHub source release or a pinned git SHA from Clojure CLI
+- no Clojars package is published yet
+- no editor extension or standalone binary is published yet
+- do not document distribution flows that the repo does not actually support
