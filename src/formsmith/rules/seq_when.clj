@@ -55,7 +55,7 @@
             (when-let [{:keys [rewritten rule-id message] :as match} (when-seq-match zloc)]
               (let [before (helpers/node-string zloc)
                     applied? (or (helpers/autofix-allowed? context zloc :semantic-pattern)
-                                 (and (not (helpers/comment-sensitive? zloc))
+                                 (and (not (helpers/source-sensitive? zloc))
                                       (guarded-local-target? context match)))
                     updated (if applied?
                               (helpers/replace-with-form zloc rewritten)

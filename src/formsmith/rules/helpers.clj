@@ -158,10 +158,17 @@
     (or (str/includes? source ";")
         (str/includes? source "#_"))))
 
+(defn metadata-sensitive? [zloc]
+  (str/includes? (z/string zloc) "^"))
+
+(defn source-sensitive? [zloc]
+  (or (comment-sensitive? zloc)
+      (metadata-sensitive? zloc)))
+
 (defn autofix-allowed? [context zloc safety]
   (and (rewrite-enabled? context)
        (contains? (allowed-autofix-safeties context) safety)
-       (not (comment-sensitive? zloc))))
+       (not (source-sensitive? zloc))))
 
 (defn parent-head-symbol [zloc]
   (some-> zloc z/up head-symbol))

@@ -54,7 +54,7 @@
             (when-let [{:keys [rule-id message] :as match} (comparison-match zloc)]
               (let [before (helpers/node-string zloc)
                     applied? (and (helpers/autofix-allowed? context zloc :syntax-safe)
-                                  (not (some-> zloc z/up helpers/comment-sensitive?)))
+                                  (not (some-> zloc z/up helpers/source-sensitive?)))
                     updated (if applied?
                               (helpers/replace-with-string zloc (rewritten-source match))
                               zloc)
