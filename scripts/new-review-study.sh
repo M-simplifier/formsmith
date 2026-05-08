@@ -13,8 +13,8 @@ repo_root=$(cd "$script_dir/.." && pwd)
 repo="${REVIEW_STUDY_REPO:-}"
 [[ "$repo" != "" ]] || die "set REVIEW_STUDY_REPO=https://github.com/org/repo"
 
-version="${FORMSMITH_VERSION:-v0.1.0-pre.5}"
-sha="${FORMSMITH_SHA:-4bd1d7228aebf24a0cc7b80c83c84396ea7d1fbc}"
+version="${FORMSMITH_VERSION:-v0.1.0-pre.6}"
+sha="${FORMSMITH_SHA:-89a06b941e32bb9fe78e5fab22d005a5147234b8}"
 ownership="${REVIEW_STUDY_OWNERSHIP:-independent}"
 
 case "$ownership" in

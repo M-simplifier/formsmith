@@ -12,7 +12,7 @@ review-comment elimination evidence.
 
 | Dimension | Current State | Public Evidence | L5 Status |
 | --- | --- | --- | --- |
-| Source release | `v0.1.0-pre.5` is documented and consumed by controlled adopters | `docs/install.md`, release notes, adoption records | pass |
+| Source release | `v0.1.0-pre.6` is documented and consumed by controlled adopters | `docs/install.md`, release notes, adoption records | pass |
 | Public CI | Formsmith public main CI and Pages are green | GitHub Actions main runs | pass |
 | Repo-only first run | Fresh clone can run the cold-start demo | `bb validate-cold-start` and site evidence | pass |
 | Controlled adoption | `clj-ops-ledger` adopted the released coordinate in CI | `docs/adoptions/clj-ops-ledger.md` | pass for controlled evidence |
