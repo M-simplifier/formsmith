@@ -6,8 +6,8 @@
 - ownership: independent | controlled-adopter | maintainer-pressure
 - baseline commit: `<sha>`
 - measured commit or PR range: <https://github.com/org/repo/pull/000>
-- Formsmith version: `v0.1.0-pre.4`
-- Formsmith SHA: `a2449935781fc6f3b2b4451aa3e8e30e0bbc9abf`
+- Formsmith version: `v0.1.0-pre.5`
+- Formsmith SHA: `4bd1d7228aebf24a0cc7b80c83c84396ea7d1fbc`
 
 ## Study Boundary
 

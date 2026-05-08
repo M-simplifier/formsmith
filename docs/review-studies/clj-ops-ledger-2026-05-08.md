@@ -5,9 +5,9 @@
 - repository: <https://github.com/M-simplifier/clj-ops-ledger>
 - ownership: controlled-adopter
 - baseline commit: `48d69325649b5115824dc2c9bd577936c62e73ce`
-- measured commit or PR range: <https://github.com/M-simplifier/clj-ops-ledger/pull/1>
-- Formsmith version: `v0.1.0-pre.4`
-- Formsmith SHA: `a2449935781fc6f3b2b4451aa3e8e30e0bbc9abf`
+- measured commit or PR range: <https://github.com/M-simplifier/clj-ops-ledger/pull/3>
+- Formsmith version: `v0.1.0-pre.5`
+- Formsmith SHA: `4bd1d7228aebf24a0cc7b80c83c84396ea7d1fbc`
 
 ## Study Boundary
 
@@ -25,9 +25,12 @@
 - release update PR: <https://github.com/M-simplifier/clj-ops-ledger/pull/2>
 - release update PR CI: <https://github.com/M-simplifier/clj-ops-ledger/actions/runs/25539625959>
 - main CI after release update: <https://github.com/M-simplifier/clj-ops-ledger/actions/runs/25539678757>
-- GitHub PR reviews and comments on both public PRs: none
+- pre5 release update PR: <https://github.com/M-simplifier/clj-ops-ledger/pull/3>
+- pre5 release update PR CI: <https://github.com/M-simplifier/clj-ops-ledger/actions/runs/25543009818>
+- pre5 main CI after release update: <https://github.com/M-simplifier/clj-ops-ledger/actions/runs/25543086960>
+- GitHub PR reviews and comments on public adoption/update PRs: none
 - review sample before Formsmith: unavailable; no public before/after review sample exists
-- review sample after Formsmith: <https://github.com/M-simplifier/clj-ops-ledger/pull/2>
+- review sample after Formsmith: <https://github.com/M-simplifier/clj-ops-ledger/pull/3>
 
 ## Finding Summary
 
@@ -57,7 +60,7 @@ documented in [`docs/adoptions/clj-ops-ledger.md`](../adoptions/clj-ops-ledger.m
 
 ## Failures
 
-No semantic regressions are known for `v0.1.0-pre.4`. The earlier
+No semantic regressions are known for `v0.1.0-pre.5`. The earlier
 metadata-sensitive rewrite failure is treated as a resolved adoption-discovered
 safety bug, not as success evidence.
 
