@@ -48,7 +48,7 @@ Whole-repo benchmarks can play two different roles:
 - clean benchmark
   the repo passes ordinary quality gates and is valid direct evidence for the narrow `v1` wedge
 - pressure repo
-  the repo is already useful for signal pressure, but still carries enough ordinary-tool noise that it should not be treated as the cleanest proof repo yet
+  the repo is already useful for signal pressure, but still carries enough ordinary-tool noise that it should not be treated as the cleanest benchmark evidence yet
 
 ## Dirty Zoo Intake Criteria
 
@@ -99,9 +99,10 @@ Run the stronger validation packet with:
 bb validate-v1
 ```
 
-Use that packet when deciding whether the current public wedge claim is actually
-proven. It expects the same sibling benchmark checkouts. Use
-`bb validate-cold-start` for the self-contained public clone proof.
+Use that packet when deciding whether the current maintainer benchmark claim is
+still supported. It expects the same sibling benchmark checkouts. Use
+`bb validate-cold-start` for the self-contained public clone first-run
+evidence.
 
 Current examples to keep in the loop:
 
@@ -110,12 +111,12 @@ Current examples to keep in the loop:
 
 Current read on those examples:
 
-- `dirty-clojure` is the current clean benchmark repo:
+- `dirty-clojure` is the current clean maintainer benchmark repo:
   - `npm test` passes
   - `npm run lint` passes
   - `npm run format:check` passes
   - `formsmith` still yields meaningful local findings after those gates
-- `nextmoon` is now also a clean benchmark repo:
+- `nextmoon` is now also a clean maintainer benchmark repo:
   - `clojure -M:test` passes
   - ad hoc `clj-kondo` on `src test deps.edn shadow-cljs.edn` passes clean
   - ad hoc `cljfmt check` on `src test deps.edn shadow-cljs.edn` passes clean

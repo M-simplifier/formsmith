@@ -12,17 +12,17 @@ This document tracks the evidence for the current `v1` flagship question:
 
 ## Benchmark Roles
 
-### Clean benchmarks
+### Clean maintainer benchmarks
 
 - `dirty-clojure`
 - `nextmoon`
-- role: proof repos for the narrow `v1` claim
+- role: maintainer benchmark repos for the narrow `v1` claim
 - expectation: ordinary quality gates pass before `formsmith` adds value
 
 ### Pressure surface
 
 - `nextmoon`
-- role: real-repo pressure and CLJS signal source in addition to being a clean proof repo
+- role: real-repo pressure and CLJS signal source in addition to being a clean maintainer benchmark repo
 
 ## Commands
 
@@ -33,8 +33,8 @@ bb validate-v1
 ```
 
 This is a maintainer evidence packet. It expects sibling benchmark checkouts for
-`dirty-clojure` and `nextmoon`. For a self-contained public clone proof, run
-`bb validate-cold-start`.
+`dirty-clojure` and `nextmoon`. For self-contained public clone first-run
+evidence, run `bb validate-cold-start`.
 
 This packet runs:
 
@@ -69,10 +69,10 @@ This packet runs:
 
 - `dirty-clojure` and `nextmoon` now both validate the narrow wedge honestly: ordinary tooling passes, and `formsmith` still finds meaningful local improvements.
 - cleaning `nextmoon` reduced the remaining `formsmith` signal from `17` to `12` and the safe preview from `6` to `1`, which is good evidence that the current findings are tighter and less entangled with ordinary-tool noise.
-- the strongest current public statement is now "two clean benchmark repos pass ordinary tooling and still yield meaningful `formsmith` signal."
+- the strongest current benchmark statement is now "two maintainer benchmark repos pass ordinary tooling and still yield meaningful `formsmith` signal."
 - `nextmoon` still adds value beyond the raw count because it remains the stronger real-repo pressure and CLJS surface.
 
 ## Next Decision
 
-- decide whether the current two-repo proof is enough for a broader public pre-beta share
+- decide whether the current two-repo maintainer benchmark packet is enough for a broader public pre-beta share
 - if not, run one owner-run cold AI operator trial before widening the audience

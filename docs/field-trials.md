@@ -46,6 +46,10 @@ To summarize existing reports without recloning or rerunning the trial:
 bash scripts/summarize-field-trial.sh
 ```
 
+The 2026-05-08 generated summaries are committed under
+[`docs/evidence/field-trials/2026-05-08/`](./evidence/field-trials/2026-05-08/)
+so public readers do not need local `target/` artifacts to inspect the counts.
+
 ## 2026-05-08 Open-Source Matrix
 
 These runs used the `v0.1.0-pre.4` code surface. `changed` means files that the

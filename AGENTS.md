@@ -86,7 +86,7 @@ clojure -M:formsmith baseline src test -o .formsmith-baseline.edn
 
 ### Public Claim Validation
 
-Use this only when checking whether the repo's public proof still holds:
+Use this only when checking whether the repo's maintainer benchmark packet still holds:
 
 ```bash
 bb validate-v1
@@ -95,8 +95,8 @@ bb validate-cold-start
 
 Interpretation:
 
-- `bb validate-v1` proves the narrow `v1` wedge against the current benchmark repos
-- `bb validate-cold-start` proves the repo-only first-run path still works
+- `bb validate-v1` checks the narrow `v1` wedge against maintainer benchmark repos
+- `bb validate-cold-start` proves the repo-only first-run path still works from the public clone
 - neither packet proves broad external human adoption on its own
 
 ## Workflow

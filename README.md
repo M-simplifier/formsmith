@@ -165,12 +165,16 @@ Current snapshot on `main` as of `2026-05-08`:
 
 Those numbers matter because both benchmark repos now pass their baseline tests, lint, and format checks before `formsmith` adds additional signal.
 
-The current public proof is now stronger:
+The current maintainer benchmark packet is stronger:
 
-- `dirty-clojure` is a clean proof repo with repeated CLJ and CLJS findings
-- `nextmoon` is also now a clean proof repo, while still acting as the stronger real-repo pressure surface
+- `dirty-clojure` is a clean maintainer benchmark repo with repeated CLJ and CLJS findings
+- `nextmoon` is also now a clean maintainer benchmark repo, while still acting as the stronger real-repo pressure surface
 
-That means `formsmith` now has two clean benchmark repos showing that meaningful local improvements remain after ordinary tooling passes.
+That means `formsmith` has two maintainer-controlled benchmark repos showing
+that meaningful local improvements remain after ordinary tooling passes. The
+self-contained public first-run evidence path is `bb validate-cold-start`;
+broader public outside-pressure evidence is tracked in
+[field trials](./docs/field-trials.md).
 
 Refresh the current matrix with:
 
@@ -268,3 +272,4 @@ That is what `formsmith v1` is trying to prove.
 - [pressure projects](./docs/pressure-projects.md)
 - [field trials](./docs/field-trials.md)
 - [review elimination study](./docs/review-elimination-study.md)
+- [review study records](./docs/review-studies/README.md)
