@@ -33,3 +33,11 @@
                                   {:file "sample.clj" :mode :fix :format? false})]
       (is (= "(if\n  ready?\n  :ready\n  :waiting)" source))
       (is (= :cond/two-clause-if (:rule-id (first findings)))))))
+
+(deftest preserves-line-break-before-inline-catchall-else-expression
+  (testing "two-clause cond reuses the break before :else, not only spaces after :else"
+    (let [{:keys [source findings]}
+          (rewrite/rewrite-string "(cond \n  (> n 0) (println :positive)\n  :else  (println :zero))"
+                                  {:file "sample.clj" :mode :fix :format? false})]
+      (is (= "(if\n  (> n 0) (println :positive)\n  (println :zero))" source))
+      (is (= :cond/two-clause-if (:rule-id (first findings)))))))

@@ -1,3 +1,4 @@
 (let [ready? false]
   (if
-   ready? :ready :waiting))
+   ready? :ready
+   :waiting))
