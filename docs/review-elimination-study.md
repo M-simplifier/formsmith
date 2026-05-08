@@ -130,6 +130,8 @@ As of `v0.1.0-pre.4`, Formsmith has:
 - public CI evidence for those projects
 - open-source field-trial scans across eight public repos
 - machine-readable field-trial summary tables
+- a public [L5 scorecard](./l5-scorecard.md) that separates the current
+  evidence dimensions from the missing review-elimination claim
 
 It does not yet have independent public adoption or a completed
 review-elimination study.

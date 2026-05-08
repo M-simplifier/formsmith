@@ -48,7 +48,8 @@ bash scripts/summarize-field-trial.sh
 
 The 2026-05-08 generated summaries are committed under
 [`docs/evidence/field-trials/2026-05-08/`](./evidence/field-trials/2026-05-08/)
-so public readers do not need local `target/` artifacts to inspect the counts.
+so public readers do not need local `target/` artifacts to inspect the counts
+or per-finding reports.
 
 ## 2026-05-08 Open-Source Matrix
 

@@ -35,7 +35,7 @@
 before_check=files=8 changed=2 findings=12
 after_check=files=8 changed=0 findings=0
 aggressive_preview=files=8 changed=0 findings=0
-contracts=not recorded
+contracts=0
 ```
 
 ## Review Comment Classification

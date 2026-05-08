@@ -1,0 +1,36 @@
+malli/src/malli/core.cljc:2186:17 [if/not-condition] if with a negated test can be written as if-not tier=standard-canonical-fix
+malli/src/malli/core.cljc:2275:17 [if/not-condition] if with a negated test can be written as if-not tier=standard-canonical-fix
+malli/src/malli/experimental/describe.cljc:243:9 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+malli/src/malli/json_schema.cljc:203:9 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+malli/src/malli/swagger.cljc:74:9 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+malli/src/malli/swagger.cljc:75:9 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+malli/test/malli/assert_test.cljc:28:7 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/core_test.cljc:344:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/core_test.cljc:552:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/core_test.cljc:568:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/core_test.cljc:2641:9 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/core_test.cljc:2740:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/core_test.cljc:2741:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/core_test.cljc:3367:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/core_test.cljc:3387:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/error_test.cljc:316:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/error_test.cljc:401:9 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/error_test.cljc:407:9 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/error_test.cljc:418:9 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/error_test.cljc:429:9 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/generator_ast.clj:39:15 [when/not-condition] when with a negated test can be written as when-not tier=standard-canonical-fix
+malli/test/malli/instrument_test.clj:124:7 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/transform_test.cljc:115:7 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/transform_test.cljc:116:7 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/transform_test.cljc:137:7 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/transform_test.cljc:142:7 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/transform_test.cljc:261:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/transform_test.cljc:266:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/transform_test.cljc:285:9 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/transform_test.cljc:318:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/transform_test.cljc:321:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/transform_test.cljc:329:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/transform_test.cljc:336:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/transform_test.cljc:469:7 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+malli/test/malli/util_test.cljc:1037:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+files=84 changed=11 findings=35

@@ -1,0 +1,18 @@
+re-frame-10x/src/day8/re_frame_10x/components/re_com.cljs:554:16 [str/redundant-string-literal] A single string literal does not need str tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/components/re_com.cljs:739:70 [str/redundant-string-literal] A single string literal does not need str tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/fx/debounce.cljs:22:4 [when/not-condition] when with a negated test can be written as when-not tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/navigation/epochs/events.cljs:150:31 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/navigation/epochs/events.cljs:151:55 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/navigation/epochs/events.cljs:194:49 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/navigation/epochs/views.cljs:19:12 [if/not-condition] if with a negated test can be written as if-not tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/panels/flow/views.cljs:98:33 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/panels/flow/views.cljs:99:33 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/panels/settings/events.cljs:195:31 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/panels/settings/events.cljs:196:26 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/panels/settings/events.cljs:197:26 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/panels/timing/views.cljs:15:14 [str/redundant-string-literal] A single string literal does not need str tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/panels/timing/views.cljs:16:16 [str/redundant-string-literal] A single string literal does not need str tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/panels/traces/views.cljs:266:38 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/panels/traces/views.cljs:267:38 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+re-frame-10x/src/day8/re_frame_10x/tools/metamorphic.cljc:166:13 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+files=85 changed=9 findings=17
