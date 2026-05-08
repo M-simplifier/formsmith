@@ -156,11 +156,11 @@ Two important commands:
 Current snapshot on `main` as of `2026-05-08`:
 
 - pure `formsmith` lint on `nextmoon/src`: `files=18 changed=0 findings=12`
-- pure `formsmith` lint on `dirty-clojure/src test`: `files=9 changed=0 findings=7`
+- pure `formsmith` lint on `dirty-clojure/src test`: `files=9 changed=0 findings=9`
 - safe preview on `nextmoon/src`: `fix --check --rewrite-only` => `files=18 changed=1 findings=1`
-- safe preview on `dirty-clojure/src test`: `fix --check --rewrite-only` => `files=9 changed=1 findings=1`
+- safe preview on `dirty-clojure/src test`: `fix --check --rewrite-only` => `files=9 changed=2 findings=4`
 - CLJS-only aggressive preview:
-  - `dirty-clojure/frontend/core.cljs` => `files=1 changed=1 findings=5`
+  - `dirty-clojure/frontend/core.cljs` => `files=1 changed=1 findings=7`
   - `nextmoon/ui/core.cljs` => `files=1 changed=1 findings=1`
 
 Those numbers matter because both benchmark repos now pass their baseline tests, lint, and format checks before `formsmith` adds additional signal.

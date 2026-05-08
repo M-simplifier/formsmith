@@ -52,9 +52,9 @@ This packet runs:
 - `npm test`: pass
 - `npm run lint`: pass
 - `npm run format:check`: pass
-- `formsmith` pure signal on `src test`: `files=9 changed=0 findings=7`
-- `formsmith` safe preview on `src test`: `files=9 changed=1 findings=1`
-- `formsmith` aggressive CLJS preview on `frontend/core.cljs`: `files=1 changed=1 findings=5`
+- `formsmith` pure signal on `src test`: `files=9 changed=0 findings=9`
+- `formsmith` safe preview on `src test`: `files=9 changed=2 findings=4`
+- `formsmith` aggressive CLJS preview on `frontend/core.cljs`: `files=1 changed=1 findings=7`
 
 ### nextmoon
 

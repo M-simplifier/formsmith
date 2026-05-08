@@ -124,13 +124,13 @@ Current read on those examples:
 - `nextmoon` still matters as the stronger pressure surface:
   - it is a real app repo, not only a generated proving repo
   - cleanup reduced the signal from `17` to `12`, which is useful evidence that the remaining findings are tighter than before
-- the current CLJS benchmark loop is now strong enough to close `M2`:
-  - `dirty-clojure/frontend/core.cljs` gives an `--aggressive --rewrite-only` preview with `files=1 changed=1 findings=5`
+- the current CLJS benchmark loop is now strong enough to keep `M2` closed:
+  - `dirty-clojure/frontend/core.cljs` gives an `--aggressive --rewrite-only` preview with `files=1 changed=1 findings=7`
   - `nextmoon/ui/core.cljs` gives an `--aggressive --rewrite-only` preview with `files=1 changed=1 findings=1`
   - both repos yield repeated `.cljs` findings from frontend-local idioms rather than parser accidents
-- the current fix-trust loop is now strong enough to close `M3`:
+- the current fix-trust loop is now strong enough to keep `M3` closed:
   - `nextmoon` safe rewrite-only preview lands at `files=18 changed=1 findings=1`
-  - `dirty-clojure` safe rewrite-only preview lands at `files=9 changed=1 findings=1`
+  - `dirty-clojure` safe rewrite-only preview lands at `files=9 changed=2 findings=4`
   - repo-wide `--check` now surfaces only rewrites that would actually apply
 
 ## Evaluation Questions
