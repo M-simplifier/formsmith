@@ -18,8 +18,8 @@ the maintainer-built pressure app, but not as independent ecosystem adoption.
 ## Release Coordinate
 
 ```clojure
-{:git/tag "v0.1.0-pre.3"
- :git/sha "9649e96a0f60c585d9f68608648f63839f5395af"}
+{:git/tag "v0.1.0-pre.4"
+ :git/sha "a2449935781fc6f3b2b4451aa3e8e30e0bbc9abf"}
 ```
 
 ## Public Evidence
@@ -32,6 +32,12 @@ the maintainer-built pressure app, but not as independent ecosystem adoption.
   <https://github.com/M-simplifier/clj-ops-ledger/actions/runs/25537426519>
 - main CI after merge:
   <https://github.com/M-simplifier/clj-ops-ledger/actions/runs/25537477147>
+- PR updating to `v0.1.0-pre.4`:
+  <https://github.com/M-simplifier/clj-ops-ledger/pull/2>
+- `v0.1.0-pre.4` PR CI:
+  <https://github.com/M-simplifier/clj-ops-ledger/actions/runs/25539625959>
+- `v0.1.0-pre.4` main CI after merge:
+  <https://github.com/M-simplifier/clj-ops-ledger/actions/runs/25539678757>
 
 ## Before Findings
 
@@ -67,7 +73,7 @@ comments, or reader-discard structure.
 
 ## After Findings
 
-After adopting `v0.1.0-pre.3`, the app is clean under both the default CI gate
+After updating to `v0.1.0-pre.4`, the app is clean under both the default CI gate
 and the aggressive no-write preview:
 
 ```text

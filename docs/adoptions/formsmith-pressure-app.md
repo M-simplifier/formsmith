@@ -12,12 +12,18 @@ independent L4 adoption evidence.
 ## Release Coordinate
 
 ```clojure
-{:git/tag "v0.1.0-pre.2"
- :git/sha "9b1b4fdca1a045ef79495ce7e94106b570f00368"}
+{:git/tag "v0.1.0-pre.4"
+ :git/sha "a2449935781fc6f3b2b4451aa3e8e30e0bbc9abf"}
 ```
 
 ## Public Evidence
 
+- PR switching to `v0.1.0-pre.4`:
+  <https://github.com/M-simplifier/formsmith-pressure-app/pull/3>
+- PR CI:
+  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25539481348>
+- main CI after merge:
+  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25539534497>
 - PR switching to `v0.1.0-pre.2`:
   <https://github.com/M-simplifier/formsmith-pressure-app/pull/2>
 - PR CI:
@@ -34,7 +40,7 @@ src/reviewdesk/client.cljs:97:4 [if/seq-if-let]
 if that tests seq can be written as if-let with not-empty
 ```
 
-The fix was applied, and later release-coordinate CI runs remained clean:
+The fix was applied, and the latest release-coordinate CI runs remain clean:
 
 ```text
 files=9 changed=0 findings=0
