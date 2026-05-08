@@ -16,7 +16,8 @@ Add a `:formsmith` alias to the target repository:
  {:formsmith
   {:extra-deps {io.github.M-simplifier/formsmith
                 {:git/url "https://github.com/M-simplifier/formsmith.git"
-                 :git/tag "v0.1.0-pre.1"}}
+                 :git/tag "v0.1.0-pre.1"
+                 :git/sha "64d7c8e9dad1859fd14c6a68fa6e682a71eda010"}}
    :main-opts ["-m" "formsmith.main"]}}}
 ```
 
@@ -28,11 +29,8 @@ clojure -M:formsmith fix --check --aggressive src test
 clojure -M:formsmith baseline src test -o .formsmith-baseline.edn
 ```
 
-If your tools.deps version requires a `:git/sha`, pin the commit shown on the
-GitHub release page.
-
-For CI or lockstep production use, prefer pinning both the release tag and the
-commit SHA that the release points to. The tag makes the intended version
+Clojure CLI git dependencies require a `:git/sha`. Pin both the release tag and
+the commit SHA that the release points to. The tag makes the intended version
 readable; the SHA keeps the dependency immutable.
 
 ## Existing Repos
