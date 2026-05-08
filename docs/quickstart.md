@@ -24,6 +24,9 @@ The goal is the next step:
 
 If you are using an AI coding agent, read `AGENTS.md` too. It tells the agent which packet to run and how to preserve the current trust boundary.
 
+For another repo, install `formsmith` through a Clojure CLI git dependency.
+See [install](./install.md).
+
 ## First Run
 
 From the repo root:

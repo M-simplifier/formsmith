@@ -22,6 +22,7 @@ The current milestone question is:
 That means the project posture is currently:
 
 - repo-first pre-beta
+- versioned GitHub source release
 - short-lived branches and PRs for mergeable work
 - `bb ci` as the default code-change gate
 - `bb benchmark-v1` when rewrite behavior or public claims move
@@ -30,6 +31,8 @@ That means the project posture is currently:
 - best-effort support while the wedge is still being proven
 
 See [contributing](./CONTRIBUTING.md).
+
+Current source release: `v0.1.0-pre.1`.
 
 If you are operating the repo through an AI coding agent, use [AGENTS.md](./AGENTS.md) as the public AI operator guide for cold sessions and packet selection.
 
@@ -67,6 +70,9 @@ clojure -M -m formsmith.main fix .
 clojure -M -m formsmith.main fix --aggressive .
 clojure -M -m formsmith.main baseline src test -o .formsmith-baseline.edn
 ```
+
+For another repo, add a `:formsmith` alias that consumes the GitHub source
+release. See [install](./docs/install.md) and [CI](./docs/ci.md).
 
 If you want only `formsmith` findings without merged `clj-kondo` output:
 
@@ -246,6 +252,9 @@ That is what `formsmith v1` is trying to prove.
 - [vision](./docs/vision.md)
 - [architecture](./docs/architecture.md)
 - [AI operator guide](./AGENTS.md)
+- [install](./docs/install.md)
+- [CI](./docs/ci.md)
+- [release notes](./docs/releases/v0.1.0-pre.1.md)
 - [proofs](./docs/proofs.md)
 - [v1 validation](./docs/v1-validation.md)
 - [quickstart](./docs/quickstart.md)

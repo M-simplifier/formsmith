@@ -20,6 +20,28 @@ harder question:
 - latest verified GitHub Actions run:
   <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25534359577>
 
+## Construction Finding
+
+During the initial build, `formsmith fix --check --aggressive src test` found a
+CLJS/re-frame idiom in `src/reviewdesk/client.cljs`:
+
+```text
+src/reviewdesk/client.cljs:97:4 [if/seq-if-let]
+if that tests seq can be written as if-let with not-empty
+```
+
+The aggressive fix was applied, then the app passed:
+
+```text
+clojure -M:test
+npx shadow-cljs release app
+clojure -M:formsmith check src test
+clojure -M:formsmith fix --check --aggressive src test
+```
+
+The latest public CI run verifies the post-fix gate remains clean:
+<https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25534359577>
+
 ## What It Proves
 
 - a separate public project can consume the public `formsmith` artifact as a git

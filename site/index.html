@@ -19,6 +19,7 @@
         <a href="#safety">Safety</a>
         <a href="#try">Try</a>
         <a href="#evidence">Evidence</a>
+        <a href="#install">Install</a>
         <a href="#docs">Docs</a>
       </nav>
     </header>
@@ -164,16 +165,37 @@ aggressive_preview_summary=files=1 changed=1 findings=4</code></pre>
         </div>
       </section>
 
+      <section class="band install-band" id="install" aria-labelledby="install-title">
+        <div class="section-inner split">
+          <div>
+            <p class="section-kicker">Pre-beta distribution</p>
+            <h2 id="install-title">Install from the versioned GitHub source release.</h2>
+          </div>
+          <div class="terminal-panel" aria-label="Clojure CLI install alias">
+            <pre><code>{:aliases
+ {:formsmith
+  {:extra-deps {io.github.M-simplifier/formsmith
+                {:git/url "https://github.com/M-simplifier/formsmith.git"
+                 :git/tag "v0.1.0-pre.1"}}
+   :main-opts ["-m" "formsmith.main"]}}}</code></pre>
+          </div>
+        </div>
+      </section>
+
       <section class="band docs-band" id="docs" aria-labelledby="docs-title">
         <div class="section-inner">
           <div class="section-heading">
             <p class="section-kicker">Start here</p>
-            <h2 id="docs-title">Use the repo as the current distribution.</h2>
+            <h2 id="docs-title">Use the GitHub source release as the current distribution.</h2>
           </div>
           <div class="link-list" aria-label="Documentation links">
             <a href="https://github.com/M-simplifier/formsmith/blob/main/README.md">README</a>
             <a href="https://github.com/M-simplifier/formsmith/blob/main/docs/quickstart.md">Quickstart</a>
+            <a href="https://github.com/M-simplifier/formsmith/blob/main/docs/install.md">Install</a>
+            <a href="https://github.com/M-simplifier/formsmith/blob/main/docs/ci.md">CI</a>
+            <a href="https://github.com/M-simplifier/formsmith/blob/main/docs/releases/v0.1.0-pre.1.md">Release notes</a>
             <a href="https://github.com/M-simplifier/formsmith/blob/main/docs/cold-start-demo.md">Cold-start demo</a>
+            <a href="https://github.com/M-simplifier/formsmith/blob/main/docs/pressure-projects.md">Pressure projects</a>
             <a href="https://github.com/M-simplifier/formsmith/blob/main/docs/architecture.md">Architecture</a>
             <a href="https://github.com/M-simplifier/formsmith/blob/main/docs/proofs.md">Proofs</a>
             <a href="https://github.com/M-simplifier/formsmith/blob/main/CONTRIBUTING.md">Contributing</a>
@@ -184,7 +206,7 @@ aggressive_preview_summary=files=1 changed=1 findings=4</code></pre>
 
     <footer class="site-footer">
       <span>MIT licensed.</span>
-      <span>Pre-beta. Repo-first. Conservative by default.</span>
+      <span>Pre-beta. Source-distributed. Conservative by default.</span>
     </footer>
 
     <script src="./script.js"></script>

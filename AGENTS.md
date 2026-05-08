@@ -16,27 +16,29 @@ Prefer the repo artifacts over outside notes. A cold session should be able to o
 
 1. `README.md`
 2. `docs/quickstart.md`
-3. `docs/cold-start-demo.md` for a repo-only first run
-4. this `AGENTS.md` for packet choice, trust boundaries, and workflow posture
-5. `docs/v1-validation.md` only when the task is to validate the public wedge claim
+3. `docs/install.md` and `docs/ci.md` when adopting `formsmith` in another repo
+4. `docs/cold-start-demo.md` for a repo-only first run
+5. this `AGENTS.md` for packet choice, trust boundaries, and workflow posture
+6. `docs/v1-validation.md` only when the task is to validate the public wedge claim
 
 Do not start with maintainer-only sibling-repo trial helpers unless the task explicitly calls for that validation style.
 
 ## Project Posture
 
 - Dominant milestone question: does the current `v1` wedge beat the formatter-plus-bug-lint stack strongly enough to justify a broader public pre-beta share?
-- Current claim boundary: `formsmith` is a repo-first, pre-beta beauty pass for code that already formats cleanly and passes ordinary lint. Keep claims within safe local rewrites, CLJ and CLJS coverage, and benchmark-backed evidence.
+- Current claim boundary: `formsmith` is a source-distributed, pre-beta beauty pass for code that already formats cleanly and passes ordinary lint. Keep claims within safe local rewrites, CLJ and CLJS coverage, and benchmark-backed evidence.
 
 ## AI Operator Defaults
 
 - Start with the repo-only cold-start demo if sibling benchmark repos are not available.
+- Use the versioned GitHub source release and a pinned Clojure CLI git dependency when adopting `formsmith` in another repo.
 - Start with `lint` then `fix --check` when the task is ordinary tool use on the current repo.
 - Use `baseline` plus `.formsmith.edn` when adopting `formsmith` in an existing
   repo that should fail CI only on new findings.
 - Use `bb validate-cold-start` for public first-run path validation.
 - Use `bb validate-v1` only when evaluating whether the current public wedge claim is actually proven.
 - Treat exit code `2` from `lint` or `fix --check` as "findings present", not as infrastructure failure.
-- Keep claims repo-first. Do not imply package installation, editor integration, or broad architecture analysis support.
+- Keep claims source-distributed. Do not imply Clojars publication, editor integration, standalone binaries, or broad architecture analysis support.
 - Preserve the trust boundary:
   - default `fix` is conservative
   - `--aggressive` is explicit opt-in
@@ -70,6 +72,14 @@ clojure -M -m formsmith.main fix --check .
 clojure -M -m formsmith.main fix .
 clojure -M -m formsmith.main fix --check --aggressive .
 clojure -M -m formsmith.main baseline src test -o .formsmith-baseline.edn
+```
+
+When operating from another repo, prefer:
+
+```bash
+clojure -M:formsmith check src test
+clojure -M:formsmith fix --check --aggressive src test
+clojure -M:formsmith baseline src test -o .formsmith-baseline.edn
 ```
 
 ### Public Claim Validation

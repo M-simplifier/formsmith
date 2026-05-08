@@ -1,0 +1,43 @@
+name: Formsmith
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  formsmith:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Install Clojure CLI
+        run: |
+          curl -L -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
+          chmod +x linux-install.sh
+          sudo ./linux-install.sh
+
+      - name: Cache Clojure dependencies
+        uses: actions/cache@v5
+        with:
+          path: |
+            ~/.m2/repository
+            ~/.gitlibs
+            ~/.deps.clj
+            .cpcache
+          key: clojure-${{ runner.os }}-${{ hashFiles('deps.edn', '.formsmith.edn') }}
+          restore-keys: |
+            clojure-${{ runner.os }}-
+
+      - name: Formsmith check
+        # Requires the :formsmith alias documented in docs/install.md.
+        run: clojure -M:formsmith check src test
