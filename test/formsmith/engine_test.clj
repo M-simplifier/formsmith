@@ -104,6 +104,17 @@
       (is (= 1 (count (:findings result))))
       (is (false? (:applied? (first (:findings result))))))))
 
+(deftest process-source-skips-unsupported-reader-discard-sexprs
+  (testing "reader-discard nodes do not crash rewrite traversal"
+    (let [source "(ns sample)\n#_(if x :kept nil)\n(defn f [m]\n  (if (nil? #_(get m :x) (:x m)) :missing :present))\n"
+          result (engine/process-source source
+                                        {:file "sample.clj"
+                                         :mode :fix
+                                         :aggressive? true
+                                         :format? false})]
+      (is (= source (:source result)))
+      (is (empty? (:findings result))))))
+
 (deftest process-file-check-mode-does-not-write
   (testing "process-file can report changes without writing them"
     (let [tmp-file (doto (java.io.File/createTempFile "formsmith-engine" ".clj")
