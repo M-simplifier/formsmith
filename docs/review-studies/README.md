@@ -12,9 +12,18 @@ Verify a completed record with:
 REVIEW_STUDY=docs/review-studies/<record>.md bb verify-review-study
 ```
 
+To also verify linked GitHub Actions runs, use:
+
+```bash
+FORMSMITH_REVIEW_STUDY_VERIFY_GITHUB=1 \
+REVIEW_STUDY=docs/review-studies/<record>.md \
+bb verify-review-study
+```
+
 The verifier checks structure, required classification labels, public GitHub
-evidence links, and placeholder removal. It does not decide whether the study is
-strong enough for L5 by itself.
+evidence links, finding-summary fields, classification counts, placeholder
+removal, and optional GitHub Actions run conclusions. It does not decide whether
+the study is strong enough for L5 by itself.
 
 Current records:
 

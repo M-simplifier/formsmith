@@ -1,0 +1,49 @@
+reitit/modules/reitit-interceptors/src/reitit/http/interceptors/exception.clj:33:27 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+reitit/modules/reitit-interceptors/src/reitit/http/interceptors/exception.clj:34:19 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+reitit/modules/reitit-middleware/src/reitit/ring/middleware/exception.clj:36:27 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+reitit/modules/reitit-middleware/src/reitit/ring/middleware/exception.clj:37:19 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+reitit/test/clj/reitit/http/interceptors/parameters_test.clj:38:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/clj/reitit/http_coercion_test.clj:305:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/clj/reitit/http_test.clj:39:13 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/clj/reitit/http_test.clj:48:13 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/clj/reitit/http_test.clj:158:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/clj/reitit/http_test.clj:160:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/clj/reitit/http_test.clj:162:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/clj/reitit/http_test.clj:230:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/clj/reitit/http_test.clj:265:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/clj/reitit/http_test.clj:271:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/clj/reitit/http_test.clj:277:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/clj/reitit/ring/middleware/parameters_test.clj:35:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/coercion_test.cljc:136:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/coercion_test.cljc:138:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/core_test.cljc:22:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/core_test.cljc:47:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/core_test.cljc:164:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/core_test.cljc:167:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/core_test.cljc:168:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/core_test.cljc:182:13 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/core_test.cljc:195:13 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/interceptor_test.cljc:166:13 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/middleware_test.cljc:184:13 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/openapi_test.clj:312:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_coercion_test.cljc:403:19 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:37:9 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:67:13 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:76:13 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:111:13 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:130:13 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:212:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:214:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:216:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:305:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:338:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:339:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:355:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:364:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:365:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:471:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:477:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljc/reitit/ring_test.cljc:483:17 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljs/reitit/frontend/history_test.cljs:45:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+reitit/test/cljs/reitit/frontend/history_test.cljs:103:15 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
+files=221 changed=14 findings=48

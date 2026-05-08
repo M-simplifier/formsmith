@@ -1,0 +1,2 @@
+conduit/src/conduit/views.cljs:438:56 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
+files=8 changed=1 findings=1

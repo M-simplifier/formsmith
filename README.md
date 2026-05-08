@@ -273,3 +273,4 @@ That is what `formsmith v1` is trying to prove.
 - [field trials](./docs/field-trials.md)
 - [review elimination study](./docs/review-elimination-study.md)
 - [review study records](./docs/review-studies/README.md)
+- [L5 scorecard](./docs/l5-scorecard.md)

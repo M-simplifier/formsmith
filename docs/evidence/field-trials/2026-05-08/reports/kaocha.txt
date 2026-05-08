@@ -1,0 +1,6 @@
+kaocha/src/kaocha/api.clj:117:19 [if/not-condition] if with a negated test can be written as if-not tier=standard-canonical-fix
+kaocha/src/kaocha/config.clj:233:5 [when/not-condition] when with a negated test can be written as when-not tier=standard-canonical-fix
+kaocha/src/kaocha/plugin/gc_profiling.clj:102:17 [cond/two-clause-if] Two-clause cond with a catch-all can be written as if tier=standard-canonical-fix
+kaocha/src/kaocha/plugin/notifier.clj:137:5 [when/not-condition] when with a negated test can be written as when-not tier=standard-canonical-fix
+kaocha/src/kaocha/stacktrace.clj:47:20 [when/not-condition] when with a negated test can be written as when-not tier=standard-canonical-fix
+files=93 changed=5 findings=5

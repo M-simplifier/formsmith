@@ -35,7 +35,7 @@
 before_check=not applicable; app was built under Formsmith pressure
 after_check=files=9 changed=0 findings=0
 aggressive_preview=files=9 changed=0 findings=0
-contracts=not recorded
+contracts=0
 ```
 
 ## Review Comment Classification
