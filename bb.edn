@@ -25,6 +25,10 @@
                :task (shell "bash" "scripts/validate-v1.sh")}
   validate-cold-start {:doc "Run the repo-only cold-start validation packet in a fresh disposable workspace copy"
                        :task (shell "bash" "scripts/validate-cold-start.sh")}
+  field-trial {:doc "Run pinned open-source field trials; clones public repos into target/field-trials"
+               :task (shell "bash" "scripts/open-source-field-trial.sh")}
+  summarize-field-trial {:doc "Summarize existing field-trial reports"
+                         :task (shell "bash" "scripts/summarize-field-trial.sh")}
   test {:doc "Run tests"
         :task (shell "clojure -M:test")}
   ci {:doc "Run the local CI set"

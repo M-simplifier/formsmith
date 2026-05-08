@@ -267,3 +267,4 @@ That is what `formsmith v1` is trying to prove.
 - [corpus](./docs/corpus.md)
 - [pressure projects](./docs/pressure-projects.md)
 - [field trials](./docs/field-trials.md)
+- [review elimination study](./docs/review-elimination-study.md)
