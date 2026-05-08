@@ -32,8 +32,8 @@ That means the project posture is currently:
 
 See [contributing](./CONTRIBUTING.md).
 
-Current source release: `v0.1.0-pre.6` at
-`89a06b941e32bb9fe78e5fab22d005a5147234b8`.
+Current source release: `v0.1.0-pre.7` at
+`decbd33310ada782d9097c195284a1ad9dcd4e39`.
 
 If you are operating the repo through an AI coding agent, use [AGENTS.md](./AGENTS.md) as the public AI operator guide for cold sessions and packet selection.
 
@@ -270,7 +270,7 @@ That is what `formsmith v1` is trying to prove.
 - [install](./docs/install.md)
 - [CI](./docs/ci.md)
 - [adoption trial](./docs/adoption-trial.md)
-- [release notes](./docs/releases/v0.1.0-pre.6.md)
+- [release notes](./docs/releases/v0.1.0-pre.7.md)
 - [proofs](./docs/proofs.md)
 - [v1 validation](./docs/v1-validation.md)
 - [quickstart](./docs/quickstart.md)
