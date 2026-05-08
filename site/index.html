@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>formsmith - Clojure-native code beauty pass</title>
+    <meta name="description" content="formsmith is a Clojure-native beauty pass for code that already formats cleanly and passes ordinary lint.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23101419'/%3E%3Ctext x='14' y='40' fill='%23ffffff' font-family='monospace' font-size='22'%3Efs%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="#top" aria-label="formsmith home">
+        <span class="brand-mark">fs</span>
+        <span>formsmith</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#why">Why</a>
+        <a href="#safety">Safety</a>
+        <a href="#try">Try</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#docs">Docs</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-scene" aria-hidden="true">
+          <pre class="scene-code scene-code-a"><code>(defn render-status [state]
+  (if (not (:ready? state))
+    [:p.muted "Waiting"]
+    (let [label (:label state)]
+      (str label))))</code></pre>
+          <pre class="scene-code scene-code-b"><code>(defn render-status [state]
+  (if-not (:ready? state)
+    [:p.muted "Waiting"]
+    (:label state)))</code></pre>
+          <div class="scene-output">
+            <span>files=3</span>
+            <span>changed=2</span>
+            <span>findings=7</span>
+          </div>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Post-formatter, post-linter Clojure cleanup</p>
+          <h1 id="hero-title">formsmith</h1>
+          <p class="hero-lede">
+            A Clojure-native beauty pass for code that already runs, already
+            formats cleanly, and still reads a little shallow.
+          </p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button primary" href="#try">Run the demo</a>
+            <a class="button secondary" href="https://github.com/M-simplifier/formsmith/blob/main/docs/quickstart.md">Read quickstart</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="band intro-band" id="why" aria-labelledby="why-title">
+        <div class="section-inner split">
+          <div>
+            <p class="section-kicker">The gap after ordinary tooling</p>
+            <h2 id="why-title">Formatters normalize shape. formsmith works on idiom.</h2>
+          </div>
+          <div class="compact-copy">
+            <p>
+              `clj-kondo` and formatters should run first. `formsmith` sits after
+              them and targets local forms that are correct but weaker than the
+              idiomatic Clojure shape.
+            </p>
+            <p>
+              The current pre-beta surface is intentionally narrow: safe local
+              rewrites, analyzer-guarded rewrites, proof-backed certified fixes,
+              LLM refactor contracts, and informational framework profiles.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band tool-band" id="try" aria-labelledby="try-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="section-kicker">Actual product surface</p>
+            <h2 id="try-title">Inspect the rewrite before it touches a file.</h2>
+          </div>
+
+          <div class="demo-shell">
+            <div class="demo-tabs" aria-label="Demo modes">
+              <button class="demo-tab active" type="button" aria-pressed="true" data-demo="safe">Safe fix</button>
+              <button class="demo-tab" type="button" aria-pressed="false" data-demo="guarded">Guarded</button>
+              <button class="demo-tab" type="button" aria-pressed="false" data-demo="contract">LLM contract</button>
+              <button class="demo-tab" type="button" aria-pressed="false" data-demo="profiles">Profiles</button>
+            </div>
+
+            <div class="code-grid">
+              <section class="code-panel" aria-labelledby="before-label">
+                <div class="code-panel-header">
+                  <span id="before-label">Before</span>
+                  <span class="file-label" id="before-file">src/ui.cljs</span>
+                </div>
+                <pre><code id="before-code"></code></pre>
+              </section>
+              <section class="code-panel" aria-labelledby="after-label">
+                <div class="code-panel-header">
+                  <span id="after-label">After / output</span>
+                  <span class="file-label" id="after-file">preview</span>
+                </div>
+                <pre><code id="after-code"></code></pre>
+              </section>
+            </div>
+
+            <div class="command-row">
+              <code id="demo-command">clojure -M -m formsmith.main fix --check .</code>
+              <button class="copy-button" type="button" data-copy-target="demo-command">Copy</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band safety-band" id="safety" aria-labelledby="safety-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="section-kicker">Trust boundary</p>
+            <h2 id="safety-title">Different certainty levels get different outputs.</h2>
+          </div>
+          <div class="tier-grid">
+            <article class="tier-item">
+              <span class="tier-tag safe">syntax-safe</span>
+              <h3>Default autofix</h3>
+              <p>Local mechanical rewrites that `formsmith fix` can apply conservatively.</p>
+            </article>
+            <article class="tier-item">
+              <span class="tier-tag guarded">analyzer-guarded</span>
+              <h3>Static facts required</h3>
+              <p>Rewrites enabled only when analyzer facts prove the supported guard.</p>
+            </article>
+            <article class="tier-item">
+              <span class="tier-tag certified">certified</span>
+              <h3>Proof-backed nucleus</h3>
+              <p>Certified fixes carry a proof id and are checked against the proof registry.</p>
+            </article>
+            <article class="tier-item">
+              <span class="tier-tag llm">llm-refactor</span>
+              <h3>Suggested, not forced</h3>
+              <p>Useful refactors whose behavior cannot be proven locally become structured LLM tasks.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="band evidence-band" id="evidence" aria-labelledby="evidence-title">
+        <div class="section-inner split">
+          <div>
+            <p class="section-kicker">Repo-first proof</p>
+            <h2 id="evidence-title">The first-run demo is part of the product.</h2>
+          </div>
+          <div class="terminal-panel" aria-label="Cold-start validation output">
+            <pre><code>$ bb validate-cold-start
+cold-start validation passed
+lint_summary=files=3 changed=0 findings=9
+check_summary=files=3 changed=2 findings=7
+preview_summary=files=3 changed=2 findings=7
+aggressive_preview_summary=files=1 changed=1 findings=4</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="band docs-band" id="docs" aria-labelledby="docs-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="section-kicker">Start here</p>
+            <h2 id="docs-title">Use the repo as the current distribution.</h2>
+          </div>
+          <div class="link-list" aria-label="Documentation links">
+            <a href="https://github.com/M-simplifier/formsmith/blob/main/README.md">README</a>
+            <a href="https://github.com/M-simplifier/formsmith/blob/main/docs/quickstart.md">Quickstart</a>
+            <a href="https://github.com/M-simplifier/formsmith/blob/main/docs/cold-start-demo.md">Cold-start demo</a>
+            <a href="https://github.com/M-simplifier/formsmith/blob/main/docs/architecture.md">Architecture</a>
+            <a href="https://github.com/M-simplifier/formsmith/blob/main/docs/proofs.md">Proofs</a>
+            <a href="https://github.com/M-simplifier/formsmith/blob/main/CONTRIBUTING.md">Contributing</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>MIT licensed.</span>
+      <span>Pre-beta. Repo-first. Conservative by default.</span>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

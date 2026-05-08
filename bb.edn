@@ -1,0 +1,31 @@
+{:tasks
+ {lint {:doc "Run formsmith lint on src and test"
+        :task (shell "clojure -M -m formsmith.main lint src test")}
+  fix {:doc "Run formsmith fix on src and test"
+       :task (shell "clojure -M -m formsmith.main fix src test")}
+  check {:doc "Run canonical no-write check on src and test"
+         :task (shell "clojure -M -m formsmith.main check src test")}
+  fmt {:doc "Run formatter phase on src and test"
+       :task (shell "clojure -M -m formsmith.main fmt src test")}
+  analyze {:doc "Show analyzer facts for src and test"
+           :task (shell "clojure -M -m formsmith.main analyze src test")}
+  profiles {:doc "Show framework profiles for the framework demo"
+            :task (shell "clojure -M -m formsmith.main profiles examples/framework-profile-demo/src")}
+  contracts {:doc "Show LLM refactor contracts for src and test"
+             :task (shell "clojure -M -m formsmith.main contracts src test")}
+  verify-proofs {:doc "Verify Lean proof artifacts"
+                 :task (shell "bash" "scripts/verify-proofs.sh")}
+  corpus-before {:doc "Show expected findings on .before corpus fixtures"
+                 :task (shell "zsh" "-lc" "clojure -M -m formsmith.main lint $(find corpus -name '*.before.clj' | sort)")}
+  corpus-clean {:doc "Lint .after corpus fixtures; should stay clean"
+                :task (shell "zsh" "-lc" "clojure -M -m formsmith.main lint --no-kondo $(find corpus -path '*/protected/*' -prune -o -name '*.after.clj' -print | sort)")}
+  benchmark-v1 {:doc "Maintainer evidence packet; requires sibling nextmoon and dirty-clojure checkouts"
+                :task (shell "bash" "scripts/benchmark-v1.sh")}
+  validate-v1 {:doc "Maintainer evidence packet; requires sibling nextmoon and dirty-clojure checkouts"
+               :task (shell "bash" "scripts/validate-v1.sh")}
+  validate-cold-start {:doc "Run the repo-only cold-start validation packet in a fresh disposable workspace copy"
+                       :task (shell "bash" "scripts/validate-cold-start.sh")}
+  test {:doc "Run tests"
+        :task (shell "clojure -M:test")}
+  ci {:doc "Run the local CI set"
+      :depends [test lint corpus-clean verify-proofs]}}}

@@ -1,0 +1,42 @@
+# Corpus Strategy
+
+`formsmith` needs two kinds of examples:
+
+- idealized examples that isolate one rule cleanly
+- intentionally ugly examples that resemble code people actually leave behind
+
+The second category matters because a style rewrite tool does not earn trust by only winning on textbook inputs.
+
+## Ugly Corpus Principles
+
+- Prefer human-plausible ugliness over random broken code.
+- Keep fixtures self-contained so lint noise does not drown the target style behavior.
+- Include cases that require multiple rewrites in sequence, not only one-rule demos.
+- Preserve examples that still feel recoverable by a conservative tool. The corpus is for beautification pressure, not parser abuse.
+- Treat `.before` files as dirty inputs and `.after` files as golden outputs. Do not rewrite fixtures in place during ordinary checks.
+
+## Current Ugly Corpus Axes
+
+- redundant `do`
+- nested `let` that can collapse into one binding block
+- redundant `str` around a single string literal
+- empty `let` bindings
+- `if` branches wrapped in single-expression `do`
+- `cond` catch-all written as `true`
+- minimal `cond` forms that should become `when` or `if`
+- negated conditions that should collapse into `when-not` or `if-not`
+- direct `seq` tests that should collapse into `not-empty`-based idioms
+- chained cases where more than one rewrite should fire
+- comment-bearing forms that should currently stay suggestion-only for safety
+- semantic rewrites that should only auto-apply in aggressive mode
+
+Over time this corpus should grow toward real-world anti-pattern shelves rather than a flat pile of random samples.
+
+## Shelf Roles
+
+- `corpus/basic`: small isolated examples for one rule at a time
+- `corpus/ugly`: intentionally awkward but human-plausible code that should clean up well
+- `corpus/aggressive`: semantic-pattern rewrites that require `fix --aggressive`
+- `corpus/protected`: cases that are still style-smelly but should remain unchanged until patch quality improves
+
+Current examples in `protected` also include macro-step contexts where a local rewrite would be valid as an expression but invalid in the surrounding macro contract.

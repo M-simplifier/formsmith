@@ -1,0 +1,13 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.12.4"}
+        org.clojure/tools.cli {:mvn/version "1.1.230"}
+        org.clojure/data.json {:mvn/version "2.5.1"}
+        rewrite-clj/rewrite-clj {:mvn/version "1.1.49"}
+        dev.weavejester/cljfmt {:mvn/version "0.13.2"}
+        clj-kondo/clj-kondo {:mvn/version "2026.01.19"}}
+ :aliases
+ {:dev {:extra-paths ["dev"]}
+  :test {:extra-paths ["test" "corpus/basic"]
+         :main-opts ["-m" "formsmith.test-runner"]}
+  :run {:main-opts ["-m" "formsmith.main"]}}}
+

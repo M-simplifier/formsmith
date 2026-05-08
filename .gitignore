@@ -1,0 +1,6 @@
+.cpcache/
+.clj-kondo/.cache/
+.clojure/
+target/
+.DS_Store
+playgrounds/

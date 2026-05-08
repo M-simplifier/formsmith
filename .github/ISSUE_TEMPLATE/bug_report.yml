@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a formsmith crash, wrong finding, or unsafe rewrite.
+title: "Bug: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: code
+    attributes:
+      label: Code shape
+      description: Include the smallest Clojure or ClojureScript example that shows the problem.
+      render: clojure
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and output
+      description: Paste the formsmith command and relevant output.
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: baseline
+    attributes:
+      label: Baseline tooling
+      description: Did the code already pass formatter and ordinary lint?
+      options:
+        - "Yes"
+        - "No"
+        - "Not sure"
+    validations:
+      required: true
+  - type: textarea
+    id: expectation
+    attributes:
+      label: Expected behavior
+      description: What should formsmith have reported or rewritten?
+    validations:
+      required: true
