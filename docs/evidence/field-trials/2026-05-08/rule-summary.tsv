@@ -2,7 +2,6 @@ rule	repos	findings
 cond/two-clause-if	1	1
 get/keyword-lookup	5	22
 if/not-condition	3	4
-if/redundant-do-branch	1	1
 nil/eq	3	74
 str/redundant-string-literal	1	4
 when/not-condition	4	6

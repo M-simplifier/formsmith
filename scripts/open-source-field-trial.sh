@@ -46,9 +46,14 @@ run_trial() {
   set +e
   local output
   output=$(cd "$repo_root" &&
-    clojure -M -m formsmith.main fix --check --rewrite-only "${paths[@]}" 2>&1)
+    clojure -M -m formsmith.main fix --no-config --check --rewrite-only "${paths[@]}" 2>&1)
   local status=$?
   set -e
+
+  local rel_work_dir="${work_dir#"$repo_root"/}"
+  output=$(printf '%s\n' "$output" |
+    sed -e "s#${work_dir}/##g" \
+        -e "s#${rel_work_dir}/##g")
 
   printf '%s\n' "$output" >"$report"
 

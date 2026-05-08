@@ -17,7 +17,7 @@ review-comment elimination evidence.
 | Repo-only first run | Fresh clone can run the cold-start demo | `bb validate-cold-start` and site evidence | pass |
 | Controlled adoption | `clj-ops-ledger` adopted the released coordinate in CI | `docs/adoptions/clj-ops-ledger.md` | pass for controlled evidence |
 | Maintainer pressure | `formsmith-pressure-app` consumes the released coordinate in CI | `docs/adoptions/formsmith-pressure-app.md` | pass for pressure evidence |
-| Field-trial parser survival | 8 public repos, 601 files, 112 findings, no unresolved crash | `docs/evidence/field-trials/2026-05-08/` | pass for outside-pressure scans |
+| Field-trial parser survival | 8 public repos, 601 files, 111 findings, no unresolved crash | `docs/evidence/field-trials/2026-05-08/` | pass for outside-pressure scans |
 | False-positive adjudication | No upstream maintainer adjudication yet | current records note no suppressions, but no external review | not passed |
 | Independent adoption | No independent public repo/team has accepted Formsmith in CI yet | none | not passed |
 | Review-comment elimination | Current review-study records have `eliminated-by-formsmith = 0` | `docs/review-studies/` | not passed |

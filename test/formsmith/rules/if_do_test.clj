@@ -18,3 +18,11 @@
                                   {:file "sample.clj" :mode :fix})]
       (is (= "(if ok?\n  (println :x)\n  (println :y))"
              source)))))
+
+(deftest skips-syntax-quoted-if-branches
+  (testing "do wrappers inside syntax-quoted macro templates preserve unquote-splicing grouping"
+    (let [input "`(if trace?\n    (binding [*trace* true]\n      ~@body)\n    (do ~@body))"
+          {:keys [source findings]}
+          (rewrite/rewrite-string input {:file "sample.clj" :mode :fix})]
+      (is (= input source))
+      (is (empty? findings)))))

@@ -12,7 +12,6 @@ re-frame-10x	if/not-condition	1
 re-frame-10x	str/redundant-string-literal	4
 re-frame-10x	when/not-condition	1
 re-frame	get/keyword-lookup	2
-re-frame	if/redundant-do-branch	1
 re-frame	nil/eq	2
 re-frame	when/not-condition	1
 reitit	get/keyword-lookup	4
