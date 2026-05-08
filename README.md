@@ -32,7 +32,8 @@ That means the project posture is currently:
 
 See [contributing](./CONTRIBUTING.md).
 
-Current source release: `v0.1.0-pre.1`.
+Current source release: `v0.1.0-pre.1` at
+`64d7c8e9dad1859fd14c6a68fa6e682a71eda010`.
 
 If you are operating the repo through an AI coding agent, use [AGENTS.md](./AGENTS.md) as the public AI operator guide for cold sessions and packet selection.
 
