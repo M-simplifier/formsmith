@@ -1,7 +1,6 @@
 re-frame/src/re_frame/settings.cljc:28:12 [when/not-condition] when with a negated test can be written as when-not tier=standard-canonical-fix
-re-frame/src/re_frame/trace.cljc:444:6 [if/redundant-do-branch] Single-expression do wrapper in the else branch can be flattened tier=standard-canonical-fix
 re-frame/test/re_frame/interceptor_test.cljs:186:11 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
 re-frame/test/re_frame/subs/alpha_test.cljs:49:14 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
 re-frame/test/re_frame/subs_test.cljs:300:9 [nil/eq] = nil can be written as nil? tier=standard-canonical-fix
 re-frame/test/re_frame/trace_delivery_test.clj:705:30 [get/keyword-lookup] get with a keyword key can be written as keyword invocation tier=standard-canonical-fix
-files=68 changed=6 findings=6
+files=68 changed=5 findings=5

@@ -167,7 +167,7 @@
       (metadata-sensitive? zloc)))
 
 (def reader-sensitive-tags
-  #{:uneval :reader-macro})
+  #{:uneval :reader-macro :syntax-quote :unquote :unquote-splicing})
 
 (defn sexpr-sensitive? [zloc]
   (contains? reader-sensitive-tags (z/tag zloc)))

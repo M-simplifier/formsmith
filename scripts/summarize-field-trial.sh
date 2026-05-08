@@ -40,7 +40,12 @@ for report in "$report_dir"/*.txt; do
   [[ "$changed" != "" ]] || die "cannot parse changed count from $report"
   [[ "$findings" != "" ]] || die "cannot parse findings count from $report"
 
-  printf '%s\t%s\t%s\t%s\t%s\n' "$repo" "$files" "$changed" "$findings" "$report" >>"$summary_file"
+  display_report="$report"
+  case "$display_report" in
+    "$PWD"/*) display_report="${display_report#"$PWD"/}" ;;
+  esac
+
+  printf '%s\t%s\t%s\t%s\t%s\n' "$repo" "$files" "$changed" "$findings" "$display_report" >>"$summary_file"
 
   sed -n 's/.*\[\([^]]*\)\].*/\1/p' "$report" |
     sort |

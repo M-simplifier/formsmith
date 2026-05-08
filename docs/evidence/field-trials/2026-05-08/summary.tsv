@@ -4,6 +4,6 @@ kaocha	93	5	5	target/field-trials/reports/kaocha.txt
 malli	84	11	35	target/field-trials/reports/malli.txt
 pingcrm-clojure	37	0	0	target/field-trials/reports/pingcrm-clojure.txt
 re-frame-10x	85	9	17	target/field-trials/reports/re-frame-10x.txt
-re-frame	68	6	6	target/field-trials/reports/re-frame.txt
+re-frame	68	5	5	target/field-trials/reports/re-frame.txt
 reitit	221	14	48	target/field-trials/reports/reitit.txt
 usermanager-reitit-example	5	0	0	target/field-trials/reports/usermanager-reitit-example.txt
