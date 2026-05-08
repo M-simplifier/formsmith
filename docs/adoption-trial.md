@@ -31,6 +31,13 @@ Required public evidence:
 Use [the review-elimination study protocol](./review-elimination-study.md) when
 the trial also claims reduced human or AI review comments.
 
+Start the public study record before or immediately after opening an adoption
+PR so evidence links and before/after counts are not lost:
+
+```bash
+REVIEW_STUDY_REPO=https://github.com/org/repo bb new-review-study
+```
+
 Do not count private repos, local-only trials, or undocumented maintainer
 experiments as L4 evidence.
 
