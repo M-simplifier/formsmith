@@ -34,6 +34,8 @@
                                (when-not path
                                  (throw (ex-info "Set REVIEW_STUDY=docs/review-studies/<record>.md" {})))
                                (shell "bash" "scripts/verify-review-study.sh" path))}
+  new-review-study {:doc "Scaffold a review-elimination study record; set REVIEW_STUDY_REPO=https://github.com/org/repo"
+                    :task (shell "bash" "scripts/new-review-study.sh")}
   test {:doc "Run tests"
         :task (shell "clojure -M:test")}
   ci {:doc "Run the local CI set"

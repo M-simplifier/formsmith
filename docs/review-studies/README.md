@@ -6,6 +6,16 @@ Use `template.md` when adding a new record. A record should be committed only
 when the public evidence is reproducible from URLs and the study does not rely
 on private chat, local screenshots, or maintainer memory.
 
+To start a new record without dropping required fields:
+
+```bash
+REVIEW_STUDY_REPO=https://github.com/org/repo bb new-review-study
+```
+
+The scaffold verifier runs with placeholder allowance. Before committing a
+completed record, replace every placeholder, record `contracts=0` when no
+contracts are present, and run the completed-record verifier below.
+
 Verify a completed record with:
 
 ```bash
