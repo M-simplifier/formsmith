@@ -56,8 +56,9 @@ or per-finding reports.
 
 ## 2026-05-08 Open-Source Matrix
 
-These runs use the current code surface after the syntax-quote reader-sensitive
-guard. `changed` means files that the default rewrite-only preview would change.
+These runs use the `v0.1.0-pre.6` code surface after the syntax-quote
+reader-sensitive guard. `changed` means files that the default rewrite-only
+preview would change.
 
 Aggregate:
 

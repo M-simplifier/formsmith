@@ -124,7 +124,7 @@ bb summarize-field-trial
 
 ## Current State
 
-As of `v0.1.0-pre.5`, Formsmith has:
+As of `v0.1.0-pre.6`, Formsmith has:
 
 - public release-coordinate adoption in maintainer-controlled pressure projects
 - public CI evidence for those projects
