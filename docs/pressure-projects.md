@@ -48,7 +48,8 @@ does not count as independent external ecosystem adoption.
 
 ## Release Consumption
 
-The pressure app now consumes the same release coordinate documented for users:
+The pressure app currently consumes the `v0.1.0-pre.6` release coordinate that
+was current when these adoption records were produced:
 
 ```clojure
 {:git/tag "v0.1.0-pre.6"
@@ -107,8 +108,11 @@ The latest public CI run verifies the post-fix gate remains clean:
 - the controlled cold adopter exposed a metadata-sensitive rewrite bug during
   adoption, and the public `v0.1.0-pre.3` release blocks that class of rewrite
   before applying fixes
-- both public adopter apps now consume the latest `v0.1.0-pre.6` source release
-  with green PR and main CI
+- both public adopter apps consumed the `v0.1.0-pre.6` source release with
+  green PR and main CI
+
+The current Formsmith source release is `v0.1.0-pre.7`. Updating the controlled
+adopters is a separate evidence packet, not implied by this record.
 
 ## What It Does Not Prove Yet
 

@@ -124,11 +124,12 @@ bb summarize-field-trial
 
 ## Current State
 
-As of `v0.1.0-pre.6`, Formsmith has:
+As of `v0.1.0-pre.7`, Formsmith has:
 
 - public release-coordinate adoption in maintainer-controlled pressure projects
 - public CI evidence for those projects
 - open-source field-trial scans across eight public repos
+- HSX/RFX and ClojureDart profile coverage for the next field-trial class
 - machine-readable field-trial summary tables
 - a public [L5 scorecard](./l5-scorecard.md) that separates the current
   evidence dimensions from the missing review-elimination claim

@@ -68,13 +68,13 @@ clojure -M:formsmith baseline src test -o .formsmith-baseline.edn
 Run this from the Formsmith repo against a local checkout of the adopter repo:
 
 ```bash
-scripts/verify-adoption.sh ../adopter-repo v0.1.0-pre.6 89a06b941e32bb9fe78e5fab22d005a5147234b8
+scripts/verify-adoption.sh ../adopter-repo v0.1.0-pre.7 decbd33310ada782d9097c195284a1ad9dcd4e39
 ```
 
 To also run the target repo's Formsmith check:
 
 ```bash
-FORMSMITH_ADOPTION_RUN_CHECK=1 scripts/verify-adoption.sh ../adopter-repo v0.1.0-pre.6 89a06b941e32bb9fe78e5fab22d005a5147234b8
+FORMSMITH_ADOPTION_RUN_CHECK=1 scripts/verify-adoption.sh ../adopter-repo v0.1.0-pre.7 decbd33310ada782d9097c195284a1ad9dcd4e39
 ```
 
 The verifier is not a maturity proof by itself. It only checks that the public
