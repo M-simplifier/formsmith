@@ -16,26 +16,26 @@ harder question:
 - backend surface: Ring, Reitit, Integrant, Malli
 - frontend surface: Reagent, re-frame, shadow-cljs
 - current Formsmith gate: public release dependency pinned to
-  `v0.1.0-pre.1` at
-  `64d7c8e9dad1859fd14c6a68fa6e682a71eda010`
+  `v0.1.0-pre.2` at
+  `9b1b4fdca1a045ef79495ce7e94106b570f00368`
 - latest verified GitHub Actions run:
-  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25535648703>
+  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25536357394>
 
 ## Release Consumption
 
 The pressure app now consumes the same release coordinate documented for users:
 
 ```clojure
-{:git/tag "v0.1.0-pre.1"
- :git/sha "64d7c8e9dad1859fd14c6a68fa6e682a71eda010"}
+{:git/tag "v0.1.0-pre.2"
+ :git/sha "9b1b4fdca1a045ef79495ce7e94106b570f00368"}
 ```
 
 Verification:
 
 - pull request CI after switching to the release coordinate:
-  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25535601486>
+  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25536307791>
 - main CI after merge:
-  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25535648703>
+  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25536357394>
 - local pressure-app checks before merge:
   `bb ci` and `clojure -M:formsmith fix --check --aggressive src test`
 
@@ -59,7 +59,7 @@ clojure -M:formsmith fix --check --aggressive src test
 ```
 
 The latest public CI run verifies the post-fix gate remains clean:
-<https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25535648703>
+<https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25536357394>
 
 ## What It Proves
 
