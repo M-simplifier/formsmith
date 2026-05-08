@@ -4,6 +4,7 @@
             [formsmith.rules.and-seq-test]
             [formsmith.catalog-test]
             [formsmith.rules.blank-idioms-test]
+            [formsmith.config-test]
             [formsmith.contract-test]
             [formsmith.corpus-test]
             [formsmith.kondo-test]
@@ -19,13 +20,15 @@
             [formsmith.rules.seq-test-test]
             [formsmith.rules.seq-when-test]
             [formsmith.engine-test]
-            [formsmith.framework-test]))
+            [formsmith.framework-test]
+            [formsmith.report-test]))
 
 (defn -main []
   (let [{:keys [fail error]} (t/run-tests 'formsmith.analysis-test
                                           'formsmith.catalog-test
                                           'formsmith.rules.and-seq-test
                                           'formsmith.rules.blank-idioms-test
+                                          'formsmith.config-test
                                           'formsmith.contract-test
                                           'formsmith.corpus-test
                                           'formsmith.kondo-test
@@ -41,6 +44,7 @@
                                           'formsmith.rules.seq-test-test
                                           'formsmith.rules.seq-when-test
                                           'formsmith.engine-test
-                                          'formsmith.framework-test)]
+                                          'formsmith.framework-test
+                                          'formsmith.report-test)]
     (when (pos? (+ fail error))
       (System/exit 1))))

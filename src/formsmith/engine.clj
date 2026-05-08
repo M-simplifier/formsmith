@@ -1,5 +1,6 @@
 (ns formsmith.engine
-  (:require [formsmith.format.backend :as backend]
+  (:require [formsmith.config :as config]
+            [formsmith.format.backend :as backend]
             [formsmith.format.cljfmt :as cljfmt]
             [formsmith.rewrite :as rewrite]))
 
@@ -32,8 +33,15 @@
   ([file context]
    (process-file file context cljfmt/default-backend))
   ([file context formatter]
-     (let [source (slurp file)
-         result (process-source source (assoc context :file file) formatter)
+   (let [source (slurp file)
+         suppressions (config/effective-suppressions (:config context) file source)
+         rule-suppressed? #(config/suppressed? suppressions
+                                               (assoc % :file file))
+         result (process-source source
+                                (assoc context
+                                       :file file
+                                       :rule-suppressed? rule-suppressed?)
+                                formatter)
          changed? (not= source (:source result))]
      (when (and changed?
                 (#{:fix :format} (:mode context))
@@ -53,6 +61,23 @@
                     (->> findings
                          (filter :applied?)
                          vec))))
+        results))
+
+(defn explain-format-only-changes [results]
+  (mapv (fn [{:keys [file changed? findings] :as result}]
+          (let [applied-findings (filter :applied? findings)]
+            (if (and changed? (empty? applied-findings))
+              (update result :findings conj
+                      {:rule-id :format/file
+                       :message "File would be reformatted"
+                       :safety :layout-only
+                       :tier :standard-canonical-fix
+                       :source :formsmith
+                       :file file
+                       :line 1
+                       :column 1
+                       :applied? true})
+              result)))
         results))
 
 (defn- same-position? [left right]

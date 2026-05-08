@@ -1,6 +1,7 @@
 (ns formsmith.report
   (:require [clojure.data.json :as json]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [formsmith.fs :as fs]))
 
 (defn- rule-label [{:keys [rule-id]}]
   (cond
@@ -35,7 +36,7 @@
     (for [{:keys [file findings]} results
           finding findings]
       (format "%s:%s:%s [%s] %s"
-              file
+              (fs/display-path file)
               (or (:line finding) 1)
               (or (:column finding) 1)
               (rule-label finding)
@@ -50,8 +51,29 @@
            (:changed summary)
            (:findings summary))))
 
-(defn json-report [results summary]
-  (json/write-str {:results results :summary summary}))
+(def source-heavy-finding-keys
+  [:before :after :suggested-source])
+
+(defn- scrub-finding [finding]
+  (apply dissoc finding source-heavy-finding-keys))
+
+(defn- scrub-result [result]
+  (-> result
+      (dissoc :source)
+      (update :file fs/display-path)
+      (update :findings #(mapv scrub-finding %))))
+
+(defn- display-result [result]
+  (update result :file fs/display-path))
+
+(defn json-report
+  ([results summary]
+   (json-report results summary {}))
+  ([results summary {:keys [include-source?]}]
+   (json/write-str {:results (if include-source?
+                               (mapv display-result results)
+                               (mapv scrub-result results))
+                    :summary summary})))
 
 (defn data-json-report [data]
   (json/write-str data))

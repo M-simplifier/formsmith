@@ -65,6 +65,7 @@ clojure -M -m formsmith.main fix --check .
 clojure -M -m formsmith.main fix --check --guarded .
 clojure -M -m formsmith.main fix .
 clojure -M -m formsmith.main fix --aggressive .
+clojure -M -m formsmith.main baseline src test -o .formsmith-baseline.edn
 ```
 
 If you want only `formsmith` findings without merged `clj-kondo` output:
@@ -94,7 +95,34 @@ bb validate-cold-start
 3. Run `fix` when the safe preview looks good.
 4. Run `fix --guarded --check` when you want analyzer-backed rewrites whose local-symbol guards are proven by static facts.
 5. Run `fix --aggressive --check` before applying broader semantic-pattern rewrites repo-wide.
-6. Use `rules` and `explain <rule-id>` when you want the catalog and safety boundary.
+6. Use `baseline` when introducing `formsmith` into an existing repo and you want CI to fail only on new findings.
+7. Use `rules` and `explain <rule-id>` when you want the catalog and safety boundary.
+
+## Production Adoption Surface
+
+`formsmith` reads `.formsmith.edn` by default when it exists. The current
+minimum production config surface is intentionally small:
+
+```clojure
+{:ignore-paths ["target" "resources/generated"]
+ :rules {:exclude [:some/rule]}
+ :baseline ".formsmith-baseline.edn"
+ :suppressions [{:file "src/app/core.clj"
+                 :rule-id :if/not-condition
+                 :line 42}]}
+```
+
+Inline suppressions are supported for the rare case where a local idiom is
+intentional:
+
+```clojure
+;; formsmith-disable-next-line if/not-condition
+(if (not ready?) :wait :go)
+```
+
+Default JSON output omits full file source and before/after snippets so CI
+artifacts are safer for proprietary repos. Use `--include-source` only for local
+debugging.
 
 ## Safety Model
 
@@ -178,6 +206,7 @@ clojure -M -m formsmith.main explain condition/and-seq
 clojure -M -m formsmith.main analyze src test
 clojure -M -m formsmith.main profiles src test
 clojure -M -m formsmith.main contracts src test
+clojure -M -m formsmith.main baseline src test -o .formsmith-baseline.edn
 ```
 
 ## Current Rule Surface

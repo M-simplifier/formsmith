@@ -81,32 +81,32 @@ EOF
 run_lint() {
   ensure_demo_dir
   cd "$repo_root"
-  run_formsmith clojure -M -m formsmith.main lint --no-kondo "$demo_dir/src" "$demo_dir/test"
+  run_formsmith clojure -M -m formsmith.main lint --no-config --no-kondo "$demo_dir/src" "$demo_dir/test"
 }
 
 run_preview() {
   ensure_demo_dir
   cd "$repo_root"
-  run_formsmith clojure -M -m formsmith.main fix --check --rewrite-only "$demo_dir/src" "$demo_dir/test"
+  run_formsmith clojure -M -m formsmith.main fix --no-config --check --rewrite-only "$demo_dir/src" "$demo_dir/test"
 }
 
 run_check() {
   ensure_demo_dir
   cd "$repo_root"
-  run_formsmith clojure -M -m formsmith.main check "$demo_dir/src" "$demo_dir/test"
+  run_formsmith clojure -M -m formsmith.main check --no-config "$demo_dir/src" "$demo_dir/test"
 }
 
 run_fix() {
   ensure_demo_dir
   cd "$repo_root"
-  clojure -M -m formsmith.main fix "$demo_dir/src" "$demo_dir/test"
+  clojure -M -m formsmith.main fix --no-config "$demo_dir/src" "$demo_dir/test"
 }
 
 run_aggressive_preview() {
   ensure_demo_dir
   [ -f "$demo_frontend_file" ] || die "demo cljs file missing: $demo_frontend_file"
   cd "$repo_root"
-  run_formsmith clojure -M -m formsmith.main fix --check --aggressive --rewrite-only "$demo_frontend_file"
+  run_formsmith clojure -M -m formsmith.main fix --no-config --check --aggressive --rewrite-only "$demo_frontend_file"
 }
 
 command="${1:-}"

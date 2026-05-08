@@ -6,8 +6,23 @@
 (defn- next-loc [zloc]
   (or (z/next zloc) zloc))
 
+(defn- rule-enabled? [context rule]
+  (if-let [rule-enabled? (:rule-enabled? context)]
+    (rule-enabled? (:id rule))
+    true))
+
+(defn- rule-suppressed? [context rule zloc]
+  (if-let [rule-suppressed? (:rule-suppressed? context)]
+    (let [[line column] (z/position zloc)]
+      (rule-suppressed? {:rule-id (:id rule)
+                         :line line
+                         :column column}))
+    false))
+
 (defn- apply-rule [zloc rule context]
-  (if ((:check rule) zloc)
+  (if (and (rule-enabled? context rule)
+           (not (rule-suppressed? context rule zloc))
+           ((:check rule) zloc))
     (let [result ((:apply rule) zloc context)]
       (update result :finding
               (fn [finding]

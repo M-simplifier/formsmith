@@ -1,0 +1,4 @@
+{:ignore-paths ["corpus"
+                "examples/cold-start-demo"
+                "playgrounds"
+                "target"]}

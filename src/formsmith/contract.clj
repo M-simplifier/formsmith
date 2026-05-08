@@ -60,6 +60,12 @@
        (filter llm-refactor-finding?)
        (mapv finding->contract)))
 
+(def source-heavy-contract-keys
+  [:current-source :suggested-source])
+
+(defn scrub-contract [contract]
+  (apply dissoc contract source-heavy-contract-keys))
+
 (defn summarize [contracts]
   {:contracts (count contracts)})
 

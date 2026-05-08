@@ -65,6 +65,19 @@ If you want to inspect rewrite locality without the formatter pass:
 clojure -M -m formsmith.main fix --check --rewrite-only .
 ```
 
+If you are adopting `formsmith` in an existing repo and want CI to block only
+new findings, create a baseline first:
+
+```bash
+clojure -M -m formsmith.main baseline src test -o .formsmith-baseline.edn
+```
+
+Then reference it from `.formsmith.edn`:
+
+```clojure
+{:baseline ".formsmith-baseline.edn"}
+```
+
 ## Apply Safe Rewrites
 
 ```bash
@@ -109,6 +122,9 @@ Use this when `formsmith` can identify a likely better shape but cannot prove a
 mechanical rewrite is behavior-preserving. The output is intended for an LLM or
 human refactor pass, not for direct autofix. Successful export exits `0` even
 when contracts are present; use `check` when you need a CI gate.
+
+JSON output omits source-heavy fields by default. Add `--include-source` only
+when you intentionally want full source snippets in a local debugging artifact.
 
 ## Format Only
 
@@ -189,7 +205,13 @@ bb validate-cold-start
 
 - default `fix` is conservative
 - `check` is the CI-facing canonical no-write command
+- `.formsmith.edn` can ignore generated paths, exclude rules, and point at a
+  baseline file
+- `baseline` lets existing projects adopt CI without paying down every old
+  finding first
 - `--guarded` applies only supported analyzer-backed rewrites
 - `--check` shows only findings that would actually apply
 - `--rewrite-only` is the best way to inspect patch locality
+- `--no-config` is useful for corpus/demo validation where the repo config would
+  intentionally ignore dirty fixtures
 - comment-sensitive forms are kept conservative through protected corpus coverage

@@ -16,7 +16,7 @@
 
 (def rule
   {:id :str/redundant-string-literal
-  :summary "Remove redundant str around a single string literal"
+   :summary "Remove redundant str around a single string literal"
    :safety :syntax-safe
    :kinds #{:rewrite}
    :check (fn [zloc]

@@ -31,6 +31,8 @@ Do not start with maintainer-only sibling-repo trial helpers unless the task exp
 
 - Start with the repo-only cold-start demo if sibling benchmark repos are not available.
 - Start with `lint` then `fix --check` when the task is ordinary tool use on the current repo.
+- Use `baseline` plus `.formsmith.edn` when adopting `formsmith` in an existing
+  repo that should fail CI only on new findings.
 - Use `bb validate-cold-start` for public first-run path validation.
 - Use `bb validate-v1` only when evaluating whether the current public wedge claim is actually proven.
 - Treat exit code `2` from `lint` or `fix --check` as "findings present", not as infrastructure failure.
@@ -67,6 +69,7 @@ clojure -M -m formsmith.main lint src test
 clojure -M -m formsmith.main fix --check .
 clojure -M -m formsmith.main fix .
 clojure -M -m formsmith.main fix --check --aggressive .
+clojure -M -m formsmith.main baseline src test -o .formsmith-baseline.edn
 ```
 
 ### Public Claim Validation

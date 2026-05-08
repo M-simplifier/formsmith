@@ -253,8 +253,8 @@
         inner-source (helpers/node-string inner-test-loc)
         head-index (helpers/find-substring-index outer-source head-source)
         test-index (helpers/find-substring-index outer-source
-                                                test-source
-                                                (+ head-index (count head-source)))]
+                                                 test-source
+                                                 (+ head-index (count head-source)))]
     (str (subs outer-source 0 head-index)
          replacement-head
          (subs outer-source (+ head-index (count head-source)) test-index)
