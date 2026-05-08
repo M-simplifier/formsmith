@@ -58,13 +58,13 @@ clojure -M:formsmith baseline src test -o .formsmith-baseline.edn
 Run this from the Formsmith repo against a local checkout of the adopter repo:
 
 ```bash
-scripts/verify-adoption.sh ../adopter-repo v0.1.0-pre.2 9b1b4fdca1a045ef79495ce7e94106b570f00368
+scripts/verify-adoption.sh ../adopter-repo v0.1.0-pre.3 9649e96a0f60c585d9f68608648f63839f5395af
 ```
 
 To also run the target repo's Formsmith check:
 
 ```bash
-FORMSMITH_ADOPTION_RUN_CHECK=1 scripts/verify-adoption.sh ../adopter-repo v0.1.0-pre.2 9b1b4fdca1a045ef79495ce7e94106b570f00368
+FORMSMITH_ADOPTION_RUN_CHECK=1 scripts/verify-adoption.sh ../adopter-repo v0.1.0-pre.3 9649e96a0f60c585d9f68608648f63839f5395af
 ```
 
 The verifier is not a maturity proof by itself. It only checks that the public
@@ -73,7 +73,10 @@ adoption shape is present.
 ## Rating Use
 
 - One maintainer-built pressure app is L3 evidence.
-- One clean, cold public adoption outside the Formsmith repo is the minimum L4
-  candidate evidence.
+- One clean, controlled cold public adoption outside the Formsmith repo is
+  stronger than pressure evidence, but is not independent ecosystem adoption by
+  itself.
+- One clean independent public adoption outside the Formsmith repos is the
+  minimum L4 candidate evidence.
 - Several independent public adoptions with low false-positive rates are needed
   before L5 can be argued.

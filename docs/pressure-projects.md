@@ -23,6 +23,27 @@ harder question:
 - adoption record:
   [docs/adoptions/formsmith-pressure-app.md](./adoptions/formsmith-pressure-app.md)
 
+## Current Controlled Cold Adopter
+
+- repo: <https://github.com/M-simplifier/clj-ops-ledger>
+- app type: full-stack Clojure/ClojureScript operations ledger
+- backend surface: Ring, Reitit, Integrant, Malli
+- frontend surface: Reagent, re-frame, shadow-cljs
+- current Formsmith gate: public release dependency pinned to
+  `v0.1.0-pre.3` at
+  `9649e96a0f60c585d9f68608648f63839f5395af`
+- adoption PR:
+  <https://github.com/M-simplifier/clj-ops-ledger/pull/1>
+- main CI after merge:
+  <https://github.com/M-simplifier/clj-ops-ledger/actions/runs/25537477147>
+- adoption record:
+  [docs/adoptions/clj-ops-ledger.md](./adoptions/clj-ops-ledger.md)
+
+This app is stronger evidence than a same-purpose pressure app because it was
+created as a separate public product surface and then adopted the released
+coordinate through a public PR. It is still controlled by the maintainers, so it
+does not count as independent external ecosystem adoption.
+
 ## Release Consumption
 
 The pressure app now consumes the same release coordinate documented for users:
@@ -73,6 +94,9 @@ The latest public CI run verifies the post-fix gate remains clean:
 - real CLJS/re-frame code already returned at least one useful aggressive
   finding during construction, and the generated fix survived tests and release
   build verification
+- the controlled cold adopter exposed a metadata-sensitive rewrite bug during
+  adoption, and the public `v0.1.0-pre.3` release blocks that class of rewrite
+  before applying fixes
 
 ## What It Does Not Prove Yet
 
