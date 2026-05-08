@@ -59,3 +59,12 @@
                                   {:file "sample.cljs" :mode :fix :aggressive? true})]
       (is (= "(and q (seq q))" source))
       (is (empty? findings)))))
+
+(deftest reader-discard-in-boolean-parent-does-not-crash
+  (testing "reader-discard source is protected before sexpr conversion"
+    (let [input "(when (and xs #_(seq xs) (seq xs)) :ready)"
+          {:keys [source findings]}
+          (rewrite/rewrite-string input
+                                  {:file "sample.cljs" :mode :fix :aggressive? true})]
+      (is (= input source))
+      (is (empty? findings)))))

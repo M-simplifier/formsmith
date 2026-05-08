@@ -43,19 +43,21 @@
             rewritten)))
 
 (defn- and-seq-match [zloc]
-  (let [form (z/sexpr zloc)]
-    (when (and (helpers/list-form? zloc)
-               (helpers/boolean-test-position? zloc)
-               (seq? form)
-               (= 'and (first form)))
-      (let [clauses (vec (rest form))
-            rewritten-clauses (normalize-and-clauses clauses)]
-        (when (not= clauses rewritten-clauses)
-          {:rewritten (if (= 1 (count rewritten-clauses))
-                        (first rewritten-clauses)
-                        (list* 'and rewritten-clauses))
-           :rule-id :condition/and-seq-not-empty
-           :message "boolean test that uses seq inside and can be written with not-empty"})))))
+  (when (and (helpers/list-form? zloc)
+             (not (helpers/source-sensitive? zloc))
+             (not (some-> zloc z/up helpers/source-sensitive?))
+             (helpers/boolean-test-position? zloc))
+    (let [form (z/sexpr zloc)]
+      (when (and (seq? form)
+                 (= 'and (first form)))
+        (let [clauses (vec (rest form))
+              rewritten-clauses (normalize-and-clauses clauses)]
+          (when (not= clauses rewritten-clauses)
+            {:rewritten (if (= 1 (count rewritten-clauses))
+                          (first rewritten-clauses)
+                          (list* 'and rewritten-clauses))
+             :rule-id :condition/and-seq-not-empty
+             :message "boolean test that uses seq inside and can be written with not-empty"}))))))
 
 (def rule
   {:id :condition/and-seq

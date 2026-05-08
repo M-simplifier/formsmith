@@ -156,7 +156,8 @@
 (defn comment-sensitive? [zloc]
   (let [source (z/string zloc)]
     (or (str/includes? source ";")
-        (str/includes? source "#_"))))
+        (str/includes? source "#_")
+        (str/includes? source "#?"))))
 
 (defn metadata-sensitive? [zloc]
   (str/includes? (z/string zloc) "^"))
@@ -164,6 +165,20 @@
 (defn source-sensitive? [zloc]
   (or (comment-sensitive? zloc)
       (metadata-sensitive? zloc)))
+
+(def reader-sensitive-tags
+  #{:uneval :reader-macro})
+
+(defn sexpr-sensitive? [zloc]
+  (contains? reader-sensitive-tags (z/tag zloc)))
+
+(defn sexpr-sensitive-context? [zloc]
+  (loop [loc zloc]
+    (cond
+      (nil? loc) false
+      (= :forms (z/tag loc)) false
+      (sexpr-sensitive? loc) true
+      :else (recur (z/up loc)))))
 
 (defn autofix-allowed? [context zloc safety]
   (and (rewrite-enabled? context)
