@@ -1,3 +1,3 @@
 (defn build-query [item]
   (cond-> []
-    (not-empty (get item :tags)) (conj :tags)))
+    (not-empty (:tags item)) (conj :tags)))

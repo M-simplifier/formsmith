@@ -33,7 +33,7 @@
     (let [{:keys [source findings]}
           (rewrite/rewrite-string "(cond-> [] (and (get item :tags) (seq (get item :tags))) (conj :tags))"
                                   {:file "sample.cljs" :mode :fix :aggressive? true})]
-      (is (= "(cond-> [] (not-empty (get item :tags)) (conj :tags))" source))
+      (is (= "(cond-> [] (not-empty (:tags item)) (conj :tags))" source))
       (is (= :condition/and-seq-not-empty (:rule-id (first findings)))))))
 
 (deftest aggressive-fix-rewrites-multiple-seq-clauses-in-when

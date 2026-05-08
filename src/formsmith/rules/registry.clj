@@ -7,6 +7,7 @@
             [formsmith.rules.empty-let :as empty-let]
             [formsmith.rules.if-do :as if-do]
             [formsmith.rules.if-nil :as if-nil]
+            [formsmith.rules.keyword-get :as keyword-get]
             [formsmith.rules.negated-condition :as negated-condition]
             [formsmith.rules.nil-predicate :as nil-predicate]
             [formsmith.rules.nested-let :as nested-let]
@@ -24,6 +25,7 @@
    nested-let/rule
    if-do/rule
    if-nil/rule
+   keyword-get/rule
    nil-predicate/rule
    cond-else/rule
    cond-minimal/rule
