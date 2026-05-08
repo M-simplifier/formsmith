@@ -256,6 +256,7 @@ That is what `formsmith v1` is trying to prove.
 - [AI operator guide](./AGENTS.md)
 - [install](./docs/install.md)
 - [CI](./docs/ci.md)
+- [adoption trial](./docs/adoption-trial.md)
 - [release notes](./docs/releases/v0.1.0-pre.2.md)
 - [proofs](./docs/proofs.md)
 - [v1 validation](./docs/v1-validation.md)

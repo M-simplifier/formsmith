@@ -20,6 +20,8 @@ harder question:
   `9b1b4fdca1a045ef79495ce7e94106b570f00368`
 - latest verified GitHub Actions run:
   <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25536357394>
+- adoption record:
+  [docs/adoptions/formsmith-pressure-app.md](./adoptions/formsmith-pressure-app.md)
 
 ## Release Consumption
 
