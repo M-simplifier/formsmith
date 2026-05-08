@@ -102,3 +102,5 @@ run_trial "usermanager-reitit-example" \
   "https://github.com/prestancedesign/usermanager-reitit-example.git" \
   "887df38f6635083e2e705cdad010c59231bab37f" \
   src dev
+
+bash "$script_dir/summarize-field-trial.sh" "$report_dir" "$scratch"

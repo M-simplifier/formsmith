@@ -76,3 +76,7 @@ clojure -M:formsmith fix --check --aggressive src test
 
 Keep this optional until the relevant semantic-pattern rules have enough
 project-specific evidence to be promoted into the default gate.
+
+When using Formsmith to reduce code-level review work, record the adoption with
+the [review-elimination study protocol](./review-elimination-study.md) rather
+than treating a green CI run as proof of reviewer impact.

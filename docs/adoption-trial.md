@@ -28,6 +28,9 @@ Required public evidence:
 - before/after finding summary
 - false-positive or suppression notes
 
+Use [the review-elimination study protocol](./review-elimination-study.md) when
+the trial also claims reduced human or AI review comments.
+
 Do not count private repos, local-only trials, or undocumented maintainer
 experiments as L4 evidence.
 

@@ -18,8 +18,10 @@ Prefer the repo artifacts over outside notes. A cold session should be able to o
 2. `docs/quickstart.md`
 3. `docs/install.md` and `docs/ci.md` when adopting `formsmith` in another repo
 4. `docs/cold-start-demo.md` for a repo-only first run
-5. this `AGENTS.md` for packet choice, trust boundaries, and workflow posture
-6. `docs/v1-validation.md` only when the task is to validate the public wedge claim
+5. `docs/field-trials.md` and `docs/review-elimination-study.md` when the task
+   is evidence, adoption maturity, or L5-style review elimination
+6. this `AGENTS.md` for packet choice, trust boundaries, and workflow posture
+7. `docs/v1-validation.md` only when the task is to validate the public wedge claim
 
 Do not start with maintainer-only sibling-repo trial helpers unless the task explicitly calls for that validation style.
 
