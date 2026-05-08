@@ -2,7 +2,7 @@
   (:require [clojure.string :as str]))
 
 (def clojure-extensions
-  #{".clj" ".cljs" ".cljc" ".bb"})
+  #{".clj" ".cljs" ".cljc" ".cljd" ".bb"})
 
 (def formatting-extensions
   (conj clojure-extensions ".edn"))

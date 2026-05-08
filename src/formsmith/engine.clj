@@ -20,13 +20,15 @@
    (case (:mode context)
      :format {:source (format-only source formatter)
               :findings []}
-     :fix (let [{rewritten :source findings :findings} (rewrite/rewrite-string source context)
+     :fix (let [{rewritten :source findings :findings} (rewrite/rewrite-string source
+                                                                               (assoc context
+                                                                                      :source source))
                 output (if (formatting-enabled? context)
                          (format-only rewritten formatter)
                          rewritten)]
             {:source output
              :findings findings})
-     :lint (rewrite/rewrite-string source context)
+     :lint (rewrite/rewrite-string source (assoc context :source source))
      (throw (ex-info "Unsupported engine mode" {:mode (:mode context)})))))
 
 (defn process-file

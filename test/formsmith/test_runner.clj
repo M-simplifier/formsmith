@@ -4,6 +4,7 @@
             [formsmith.rules.and-seq-test]
             [formsmith.catalog-test]
             [formsmith.rules.blank-idioms-test]
+            [formsmith.rules.clojuredart-flutter-test]
             [formsmith.config-test]
             [formsmith.contract-test]
             [formsmith.corpus-test]
@@ -11,6 +12,7 @@
             [formsmith.rules.cond-minimal-test]
             [formsmith.rules.cond-else-test]
             [formsmith.rules.empty-let-test]
+            [formsmith.rules.hsx-rfx-test]
             [formsmith.rules.if-do-test]
             [formsmith.rules.if-nil-test]
             [formsmith.rules.keyword-get-test]
@@ -23,13 +25,15 @@
             [formsmith.rules.seq-when-test]
             [formsmith.engine-test]
             [formsmith.framework-test]
-            [formsmith.report-test]))
+            [formsmith.report-test]
+            [formsmith.source-test]))
 
 (defn -main []
   (let [{:keys [fail error]} (t/run-tests 'formsmith.analysis-test
                                           'formsmith.catalog-test
                                           'formsmith.rules.and-seq-test
                                           'formsmith.rules.blank-idioms-test
+                                          'formsmith.rules.clojuredart-flutter-test
                                           'formsmith.config-test
                                           'formsmith.contract-test
                                           'formsmith.corpus-test
@@ -37,6 +41,7 @@
                                           'formsmith.rules.cond-minimal-test
                                           'formsmith.rules.cond-else-test
                                           'formsmith.rules.empty-let-test
+                                          'formsmith.rules.hsx-rfx-test
                                           'formsmith.rules.if-do-test
                                           'formsmith.rules.if-nil-test
                                           'formsmith.rules.keyword-get-test
@@ -49,6 +54,7 @@
                                           'formsmith.rules.seq-when-test
                                           'formsmith.engine-test
                                           'formsmith.framework-test
-                                          'formsmith.report-test)]
+                                          'formsmith.report-test
+                                          'formsmith.source-test)]
     (when (pos? (+ fail error))
       (System/exit 1))))

@@ -4,7 +4,9 @@
             [formsmith.rules.blank-idioms :as blank-idioms]
             [formsmith.rules.cond-minimal :as cond-minimal]
             [formsmith.rules.cond-else :as cond-else]
+            [formsmith.rules.clojuredart-flutter :as clojuredart-flutter]
             [formsmith.rules.empty-let :as empty-let]
+            [formsmith.rules.hsx-rfx :as hsx-rfx]
             [formsmith.rules.if-do :as if-do]
             [formsmith.rules.if-nil :as if-nil]
             [formsmith.rules.keyword-get :as keyword-get]
@@ -27,6 +29,8 @@
    if-nil/rule
    keyword-get/rule
    nil-predicate/rule
+   clojuredart-flutter/rule
+   hsx-rfx/rule
    cond-else/rule
    cond-minimal/rule
    negated-condition/rule

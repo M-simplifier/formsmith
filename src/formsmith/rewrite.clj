@@ -22,7 +22,9 @@
 
 (defn- unsupported-sexpr-error? [error]
   (or (and (instance? clojure.lang.ExceptionInfo error)
-           (= "unsupported operation" (ex-message error)))
+           (#{"unsupported operation"
+              "Metadata must be a map, keyword, symbol or string"}
+            (ex-message error)))
       (and (instance? IllegalArgumentException error)
            (some-> (ex-message error)
                    (.startsWith "No value supplied for key:")))))

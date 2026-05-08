@@ -1,6 +1,8 @@
 (ns formsmith.analysis
-  (:require [formsmith.framework :as framework]
-            [formsmith.kondo :as kondo]))
+  (:require [formsmith.fs :as fs]
+            [formsmith.framework :as framework]
+            [formsmith.kondo :as kondo]
+            [formsmith.source :as source]))
 
 (defn analyze-paths [paths]
   (:analysis (kondo/analyze-paths paths)))
@@ -16,7 +18,11 @@
                   :line row
                   :column col})))
        distinct
-       (sort-by (juxt :from :to :file :line :column))
+       (sort-by (juxt #(str (:from %))
+                      #(str (:to %))
+                      :file
+                      :line
+                      :column))
        vec))
 
 (defn namespace-definitions [analysis]
@@ -55,9 +61,39 @@
                 (= column (or name-col col))))
          (:var-usages analysis))))
 
+(defn- source-scan-dep? [dep]
+  (= :source-scan (:source dep)))
+
+(defn- better-dep [existing candidate]
+  (cond
+    (nil? existing) candidate
+    (and (source-scan-dep? existing)
+         (not (source-scan-dep? candidate))) candidate
+    :else existing))
+
+(defn- dep-key [{:keys [from to alias file]}]
+  [(str from) (str to) (str alias) (fs/display-path file)])
+
+(defn- merge-namespace-deps [deps]
+  (->> deps
+       (reduce (fn [acc dep]
+                 (let [key (dep-key dep)]
+                   (update acc key better-dep dep)))
+               {})
+       vals))
+
 (defn project-facts [paths]
   (let [analysis (analyze-paths paths)
-        namespace-deps (namespace-deps analysis)
+        namespace-deps (->> (merge-namespace-deps
+                             (concat (namespace-deps analysis)
+                                     (source/namespace-deps-from-paths paths)))
+                            distinct
+                            (sort-by (juxt #(str (:from %))
+                                           #(str (:to %))
+                                           :file
+                                           :line
+                                           :column))
+                            vec)
         frameworks (framework/detect namespace-deps)]
     {:summary (assoc (summary analysis)
                      :frameworks (count frameworks))

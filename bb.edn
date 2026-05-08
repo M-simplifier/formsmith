@@ -16,9 +16,9 @@
   verify-proofs {:doc "Verify Lean proof artifacts"
                  :task (shell "bash" "scripts/verify-proofs.sh")}
   corpus-before {:doc "Show expected findings on .before corpus fixtures"
-                 :task (shell "bash" "-lc" "clojure -M -m formsmith.main lint --no-config $(find corpus -name '*.before.clj' | sort)")}
+                 :task (shell "bash" "-lc" "clojure -M -m formsmith.main lint --no-config $(find corpus \\( -name '*.before.clj' -o -name '*.before.cljd' \\) | sort)")}
   corpus-clean {:doc "Lint .after corpus fixtures; should stay clean"
-                :task (shell "bash" "-lc" "clojure -M -m formsmith.main lint --no-config --no-kondo $(find corpus -path '*/protected/*' -prune -o -name '*.after.clj' -print | sort)")}
+                :task (shell "bash" "-lc" "clojure -M -m formsmith.main lint --no-config --no-kondo $(find corpus -path '*/protected/*' -prune -o \\( -name '*.after.clj' -o -name '*.after.cljd' \\) -print | sort)")}
   benchmark-v1 {:doc "Maintainer evidence packet; requires sibling nextmoon and dirty-clojure checkouts"
                 :task (shell "bash" "scripts/benchmark-v1.sh")}
   validate-v1 {:doc "Maintainer evidence packet; requires sibling nextmoon and dirty-clojure checkouts"

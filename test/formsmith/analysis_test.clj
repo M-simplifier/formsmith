@@ -17,11 +17,15 @@
 (deftest project-facts-include-framework-profiles
   (testing "analysis facts expose detected framework profiles"
     (let [facts (analysis/project-facts ["examples/framework-profile-demo/src"])
-          framework-ids (set (map :id (:frameworks facts)))]
-      (is (= 2 (get-in facts [:summary :namespaces])))
-      (is (= 6 (get-in facts [:summary :frameworks])))
-      (is (= #{"integrant" "malli" "re-frame" "reagent" "reitit" "ring"}
-             framework-ids)))))
+          framework-ids (set (map :id (:frameworks facts)))
+          clojuredart-profile (some #(when (= "clojuredart" (:id %)) %)
+                                    (:frameworks facts))]
+      (is (= 4 (get-in facts [:summary :namespaces])))
+      (is (= 9 (get-in facts [:summary :frameworks])))
+      (is (= #{"clojuredart" "hsx" "integrant" "malli" "re-frame" "reagent" "reitit" "rfx" "ring"}
+             framework-ids))
+      (is (= #{"cljd.flutter" "package:flutter/material.dart"}
+             (set (map :to (:evidence clojuredart-profile))))))))
 
 (deftest local-usage-predicate-finds-function-arguments
   (testing "local usage facts can guard rewrites at a concrete source position"

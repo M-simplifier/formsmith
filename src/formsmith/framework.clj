@@ -17,6 +17,34 @@
     :canonical-guidance ["Keep component view functions separate from app-state registration code."
                          "Prefer local Hiccup helpers over deeply nested anonymous view forms when structure repeats."
                          "Keep ratom state ownership explicit at component boundaries."]}
+   {:id "hsx"
+    :label "HSX"
+    :category "cljs-view"
+    :exact #{'io.factorhouse.hsx.core}
+    :prefixes ["io.factorhouse.hsx."]
+    :canonical-guidance ["Keep HSX components as ordinary React function components with stable identities."
+                         "Prefer React hooks such as useState, useEffect, and useRef over Reagent ratom patterns."
+                         "Use hsx/create-element and hsx/reactify-component at interop boundaries, not as ad hoc wrappers inside render bodies."]}
+   {:id "rfx"
+    :label "RFX"
+    :category "cljs-state"
+    :exact #{'io.factorhouse.rfx.core
+             'io.factorhouse.re-frame-bridge.core}
+    :prefixes ["io.factorhouse.rfx."]
+    :canonical-guidance ["Prefer explicit RFX contexts for application edges and tests."
+                         "Use RFX hooks from React components instead of treating subscriptions as derefable Reagent reactions."
+                         "Use snapshot and snapshot-sub only at non-React integration boundaries where non-reactive reads are intended."]}
+   {:id "clojuredart"
+    :label "ClojureDart"
+    :category "mobile-ui"
+    :exact #{'cljd.flutter
+             'cljd.flutter.alpha
+             'cljd.flutter.alpha2
+             "package:flutter/material.dart"}
+    :prefixes ["cljd." "package:flutter/"]
+    :canonical-guidance ["Prefer cljd.flutter over deprecated cljd.flutter.alpha namespaces."
+                         "Flatten long single-child Flutter widget chains with f/nest when the cljd.flutter alias is explicit."
+                         "Keep widget macro lifecycle options such as :state, :watch, and :with visible at component boundaries."]}
    {:id "ring"
     :label "Ring"
     :category "http"
