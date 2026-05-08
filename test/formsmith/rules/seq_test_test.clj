@@ -45,7 +45,7 @@
     (let [{:keys [source findings]}
           (rewrite/rewrite-string "(if (seq (get item :tags)) (count (get item :tags)) 0)"
                                   {:file "sample.cljs" :mode :fix :aggressive? true})]
-      (is (= "(if-let [tags (not-empty (get item :tags))] (count tags) 0)"
+      (is (= "(if-let [tags (not-empty (:tags item))] (count tags) 0)"
              source))
       (is (= :if/seq-if-let (:rule-id (first findings)))))))
 

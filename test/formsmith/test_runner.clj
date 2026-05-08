@@ -13,6 +13,7 @@
             [formsmith.rules.empty-let-test]
             [formsmith.rules.if-do-test]
             [formsmith.rules.if-nil-test]
+            [formsmith.rules.keyword-get-test]
             [formsmith.rules.negated-condition-test]
             [formsmith.rules.nil-predicate-test]
             [formsmith.rules.nested-let-test]
@@ -38,6 +39,7 @@
                                           'formsmith.rules.empty-let-test
                                           'formsmith.rules.if-do-test
                                           'formsmith.rules.if-nil-test
+                                          'formsmith.rules.keyword-get-test
                                           'formsmith.rules.negated-condition-test
                                           'formsmith.rules.nil-predicate-test
                                           'formsmith.rules.nested-let-test
