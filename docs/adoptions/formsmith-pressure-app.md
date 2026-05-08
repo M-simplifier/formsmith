@@ -12,8 +12,8 @@ independent L4 adoption evidence.
 ## Release Coordinate
 
 ```clojure
-{:git/tag "v0.1.0-pre.4"
- :git/sha "a2449935781fc6f3b2b4451aa3e8e30e0bbc9abf"}
+{:git/tag "v0.1.0-pre.5"
+ :git/sha "4bd1d7228aebf24a0cc7b80c83c84396ea7d1fbc"}
 ```
 
 ## Public Evidence
@@ -24,6 +24,12 @@ independent L4 adoption evidence.
   <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25539481348>
 - main CI after merge:
   <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25539534497>
+- PR switching to `v0.1.0-pre.5`:
+  <https://github.com/M-simplifier/formsmith-pressure-app/pull/4>
+- PR CI:
+  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25543016191>
+- main CI after merge:
+  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25543087196>
 - PR switching to `v0.1.0-pre.2`:
   <https://github.com/M-simplifier/formsmith-pressure-app/pull/2>
 - PR CI:

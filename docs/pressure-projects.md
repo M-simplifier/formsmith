@@ -16,10 +16,10 @@ harder question:
 - backend surface: Ring, Reitit, Integrant, Malli
 - frontend surface: Reagent, re-frame, shadow-cljs
 - current Formsmith gate: public release dependency pinned to
-  `v0.1.0-pre.4` at
-  `a2449935781fc6f3b2b4451aa3e8e30e0bbc9abf`
+  `v0.1.0-pre.5` at
+  `4bd1d7228aebf24a0cc7b80c83c84396ea7d1fbc`
 - latest verified GitHub Actions run:
-  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25539534497>
+  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25543087196>
 - adoption record:
   [docs/adoptions/formsmith-pressure-app.md](./adoptions/formsmith-pressure-app.md)
 
@@ -30,14 +30,14 @@ harder question:
 - backend surface: Ring, Reitit, Integrant, Malli
 - frontend surface: Reagent, re-frame, shadow-cljs
 - current Formsmith gate: public release dependency pinned to
-  `v0.1.0-pre.4` at
-  `a2449935781fc6f3b2b4451aa3e8e30e0bbc9abf`
+  `v0.1.0-pre.5` at
+  `4bd1d7228aebf24a0cc7b80c83c84396ea7d1fbc`
 - adoption PR:
   <https://github.com/M-simplifier/clj-ops-ledger/pull/1>
 - latest release update PR:
-  <https://github.com/M-simplifier/clj-ops-ledger/pull/2>
+  <https://github.com/M-simplifier/clj-ops-ledger/pull/3>
 - main CI after merge:
-  <https://github.com/M-simplifier/clj-ops-ledger/actions/runs/25539678757>
+  <https://github.com/M-simplifier/clj-ops-ledger/actions/runs/25543086960>
 - adoption record:
   [docs/adoptions/clj-ops-ledger.md](./adoptions/clj-ops-ledger.md)
 
@@ -51,13 +51,17 @@ does not count as independent external ecosystem adoption.
 The pressure app now consumes the same release coordinate documented for users:
 
 ```clojure
-{:git/tag "v0.1.0-pre.4"
- :git/sha "a2449935781fc6f3b2b4451aa3e8e30e0bbc9abf"}
+{:git/tag "v0.1.0-pre.5"
+ :git/sha "4bd1d7228aebf24a0cc7b80c83c84396ea7d1fbc"}
 ```
 
 Verification:
 
 - pull request CI after switching to the latest release coordinate:
+  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25543016191>
+- main CI after merge:
+  <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25543087196>
+- pull request CI after switching to the previous release coordinate:
   <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25539481348>
 - main CI after merge:
   <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25539534497>
@@ -88,7 +92,7 @@ clojure -M:formsmith fix --check --aggressive src test
 ```
 
 The latest public CI run verifies the post-fix gate remains clean:
-<https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25539534497>
+<https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25543087196>
 
 ## What It Proves
 
@@ -103,7 +107,7 @@ The latest public CI run verifies the post-fix gate remains clean:
 - the controlled cold adopter exposed a metadata-sensitive rewrite bug during
   adoption, and the public `v0.1.0-pre.3` release blocks that class of rewrite
   before applying fixes
-- both public adopter apps now consume the latest `v0.1.0-pre.4` source release
+- both public adopter apps now consume the latest `v0.1.0-pre.5` source release
   with green PR and main CI
 
 ## What It Does Not Prove Yet

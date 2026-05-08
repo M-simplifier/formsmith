@@ -5,9 +5,9 @@
 - repository: <https://github.com/M-simplifier/formsmith-pressure-app>
 - ownership: maintainer-pressure
 - baseline commit: `b185abf8d080c67cf8a70004bafeb92bf86a384f`
-- measured commit or PR range: <https://github.com/M-simplifier/formsmith-pressure-app/pull/3>
-- Formsmith version: `v0.1.0-pre.4`
-- Formsmith SHA: `a2449935781fc6f3b2b4451aa3e8e30e0bbc9abf`
+- measured commit or PR range: <https://github.com/M-simplifier/formsmith-pressure-app/pull/4>
+- Formsmith version: `v0.1.0-pre.5`
+- Formsmith SHA: `4bd1d7228aebf24a0cc7b80c83c84396ea7d1fbc`
 
 ## Study Boundary
 
@@ -19,15 +19,18 @@
 
 ## Public Evidence
 
-- release update PR: <https://github.com/M-simplifier/formsmith-pressure-app/pull/3>
-- PR CI: <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25539481348>
-- main CI after merge: <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25539534497>
 - earlier release-coordinate PR: <https://github.com/M-simplifier/formsmith-pressure-app/pull/2>
 - earlier PR CI: <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25536307791>
 - earlier main CI after merge: <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25536357394>
-- GitHub PR reviews and comments on both public PRs: none
+- pre4 release update PR: <https://github.com/M-simplifier/formsmith-pressure-app/pull/3>
+- pre4 PR CI: <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25539481348>
+- pre4 main CI after merge: <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25539534497>
+- pre5 release update PR: <https://github.com/M-simplifier/formsmith-pressure-app/pull/4>
+- pre5 PR CI: <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25543016191>
+- pre5 main CI after merge: <https://github.com/M-simplifier/formsmith-pressure-app/actions/runs/25543087196>
+- GitHub PR reviews and comments on public release-coordinate PRs: none
 - review sample before Formsmith: unavailable; the app is a maintainer pressure project
-- review sample after Formsmith: <https://github.com/M-simplifier/formsmith-pressure-app/pull/3>
+- review sample after Formsmith: <https://github.com/M-simplifier/formsmith-pressure-app/pull/4>
 
 ## Finding Summary
 
