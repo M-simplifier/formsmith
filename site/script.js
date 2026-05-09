@@ -28,13 +28,20 @@ const demos = {
        [:li item])]))`
   },
   contract: {
-    beforeFile: "src/forms.cljs",
-    afterFile: "LLM refactor contract",
+    beforeFile: "src/events.cljs",
+    afterFile: "framework contract",
     command: "clojure -M -m formsmith.main contracts src",
-    before: `(empty? (str/trim value))`,
-    after: `contract-id=llm-refactor:empty/trim-blank:src/forms.cljs:1:1
-blocked-by=nil semantics can differ
-llm-task=Inspect the surrounding code and decide whether blank? preserves the intended behavior.`
+    before: `(ns app.events
+  (:require [re-frame.core :as rf]))
+
+(rf/reg-event-db
+ :save
+ (fn [db [_ value]]
+   (rf/dispatch [:saved value])
+   db))`,
+    after: `contract-id=llm-refactor:re-frame/reg-event-db-side-effect:src/events.cljs:4:1
+blocked-by=Moving side effects changes event/effect ordering and requires app-specific effect registration.
+llm-task=Move side effects out of this reg-event-db handler into reg-event-fx or a registered effect.`
   },
   cljd: {
     beforeFile: "src/mobile.cljd",

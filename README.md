@@ -97,11 +97,12 @@ Maintainers can verify that repo-only path from a fresh disposable workspace cop
 bb validate-cold-start
 ```
 
-Framework-aware output is currently informational, except for narrow local
-rewrites with explicit guards. The current profile surface includes re-frame,
-Reagent, HSX, RFX, ClojureDart, Ring, Reitit, Integrant, and Malli. ClojureDart
-support includes `.cljd` files, Flutter string-package requires, and the first
-visible Flutter UI rewrite from nested `.child` chains to `cljd.flutter/nest`.
+Framework-aware output includes informational profiles, report-only LLM
+contracts, and narrow local rewrites with explicit guards. The current profile
+surface includes re-frame, Reagent, HSX, RFX, ClojureDart, Ring, Reitit,
+Integrant, and Malli. ClojureDart support includes `.cljd` files, Flutter
+string-package requires, and the first visible Flutter UI rewrite from nested
+`.child` chains to `cljd.flutter/nest`.
 See [framework profiles](./docs/framework-profiles.md).
 
 ## Recommended Workflow

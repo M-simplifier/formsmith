@@ -5,7 +5,7 @@
             [rewrite-clj.zip :as z]))
 
 (defn- next-loc [zloc]
-  (or (z/next zloc) zloc))
+  (z/next zloc))
 
 (defn- rule-enabled? [context rule]
   (if-let [rule-enabled? (:rule-enabled? context)]
@@ -74,11 +74,20 @@
   (let [root (z/of-string source {:track-position? true})
         rules (registry/validated-rules)]
     (loop [loc root
-           findings []]
-      (if (z/end? loc)
+           findings []
+           last-loc root]
+      (cond
+        (nil? loc)
+        {:source (z/root-string last-loc)
+         :findings findings}
+
+        (z/end? loc)
         {:source (z/root-string loc)
          :findings findings}
+
+        :else
         (let [{updated-loc :zloc new-findings :findings}
               (apply-rules-at-loc loc rules context)]
           (recur (next-loc updated-loc)
-                 (into findings new-findings)))))))
+                 (into findings new-findings)
+                 updated-loc))))))

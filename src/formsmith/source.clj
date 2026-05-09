@@ -12,10 +12,11 @@
   (let [root (z/of-string source {:track-position? true})]
     (loop [loc root]
       (cond
+        (nil? loc) nil
         (z/end? loc) nil
         (and (= :list (z/tag loc))
              (= 'ns (head-symbol loc))) loc
-        :else (recur (or (z/next loc) loc))))))
+        :else (recur (z/next loc))))))
 
 (defn- option-value [options target]
   (loop [[option value & more] options]
@@ -51,6 +52,13 @@
 (defn namespace-deps-from-file [file]
   (namespace-deps-from-source file (slurp file)))
 
+(defn cached-namespace-deps [context]
+  (if-let [deps (:namespace-deps context)]
+    (if (delay? deps)
+      @deps
+      deps)
+    (namespace-deps-from-source (:file context) (:source context))))
+
 (defn namespace-deps-from-paths [paths]
   (->> (fs/discover-targets paths :lint)
        (mapcat namespace-deps-from-file)
@@ -63,7 +71,18 @@
                (when (= target to)
                  alias)))))
 
+(defn alias-for-context [context target]
+  (->> (cached-namespace-deps context)
+       (some (fn [{:keys [to alias]}]
+               (when (= target to)
+                 alias)))))
+
 (defn required? [source target]
   (boolean
    (some #(= target (:to %))
          (namespace-deps-from-source nil source))))
+
+(defn required-in-context? [context target]
+  (boolean
+   (some #(= target (:to %))
+         (cached-namespace-deps context))))

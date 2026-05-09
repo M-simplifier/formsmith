@@ -8,15 +8,18 @@
             [formsmith.config-test]
             [formsmith.contract-test]
             [formsmith.corpus-test]
+            [formsmith.rules.core-idioms-test]
             [formsmith.kondo-test]
             [formsmith.rules.cond-minimal-test]
             [formsmith.rules.cond-else-test]
             [formsmith.rules.empty-let-test]
+            [formsmith.rules.framework-contracts-test]
             [formsmith.rules.hsx-rfx-test]
             [formsmith.rules.if-do-test]
             [formsmith.rules.if-nil-test]
             [formsmith.rules.keyword-get-test]
             [formsmith.rules.negated-condition-test]
+            [formsmith.rules.namespace-hygiene-test]
             [formsmith.rules.nil-predicate-test]
             [formsmith.rules.nested-let-test]
             [formsmith.rules.redundant-do-test]
@@ -37,15 +40,18 @@
                                           'formsmith.config-test
                                           'formsmith.contract-test
                                           'formsmith.corpus-test
+                                          'formsmith.rules.core-idioms-test
                                           'formsmith.kondo-test
                                           'formsmith.rules.cond-minimal-test
                                           'formsmith.rules.cond-else-test
                                           'formsmith.rules.empty-let-test
+                                          'formsmith.rules.framework-contracts-test
                                           'formsmith.rules.hsx-rfx-test
                                           'formsmith.rules.if-do-test
                                           'formsmith.rules.if-nil-test
                                           'formsmith.rules.keyword-get-test
                                           'formsmith.rules.negated-condition-test
+                                          'formsmith.rules.namespace-hygiene-test
                                           'formsmith.rules.nil-predicate-test
                                           'formsmith.rules.nested-let-test
                                           'formsmith.rules.redundant-do-test

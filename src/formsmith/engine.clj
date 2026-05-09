@@ -2,7 +2,8 @@
   (:require [formsmith.config :as config]
             [formsmith.format.backend :as backend]
             [formsmith.format.cljfmt :as cljfmt]
-            [formsmith.rewrite :as rewrite]))
+            [formsmith.rewrite :as rewrite]
+            [formsmith.source :as source]))
 
 (defn- format-only [source formatter]
   (backend/format-source formatter source nil))
@@ -13,6 +14,12 @@
 (defn- writing-enabled? [context]
   (not= false (:write? context)))
 
+(defn- source-context [source context]
+  (assoc context
+         :source source
+         :namespace-deps (delay
+                           (source/namespace-deps-from-source (:file context) source))))
+
 (defn process-source
   ([source context]
    (process-source source context cljfmt/default-backend))
@@ -21,14 +28,13 @@
      :format {:source (format-only source formatter)
               :findings []}
      :fix (let [{rewritten :source findings :findings} (rewrite/rewrite-string source
-                                                                               (assoc context
-                                                                                      :source source))
+                                                                               (source-context source context))
                 output (if (formatting-enabled? context)
                          (format-only rewritten formatter)
                          rewritten)]
             {:source output
              :findings findings})
-     :lint (rewrite/rewrite-string source (assoc context :source source))
+     :lint (rewrite/rewrite-string source (source-context source context))
      (throw (ex-info "Unsupported engine mode" {:mode (:mode context)})))))
 
 (defn process-file

@@ -1,0 +1,7 @@
+(ns demo.mobile
+  (:require ["package:flutter/material.dart" :as m]
+            [cljd.flutter :as f]))
+
+(f/widget
+ (let [open (atom false)]
+   (m/Text "x")))

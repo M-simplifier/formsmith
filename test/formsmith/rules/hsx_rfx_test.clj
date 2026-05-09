@@ -36,3 +36,63 @@
             :mode :lint})]
       (is (= [:rfx/implicit-global-dispatch] (mapv :rule-id findings)))
       (is (false? (:applied? (first findings)))))))
+
+(deftest emits-hsx-entrypoint-contracts
+  (testing "Reagent as-element entrypoints are not the canonical HSX render path"
+    (let [{:keys [findings]}
+          (engine/process-source
+           "(ns demo.hsx
+  (:require [io.factorhouse.hsx.core :as hsx]
+            [reagent.core :as r]))
+(defn mount! [root]
+  (.render root (r/as-element [:main \"ok\"])))
+"
+           {:file "src/demo/hsx.cljs"
+            :mode :lint})]
+      (is (= [:hsx/reagent-as-element-entrypoint] (mapv :rule-id findings)))
+      (is (false? (:applied? (first findings))))))
+  (testing "Reagent create-class components need an HSX migration contract"
+    (let [{:keys [findings]}
+          (engine/process-source
+           "(ns demo.hsx
+  (:require [io.factorhouse.hsx.core :as hsx]
+            [reagent.core :as r]))
+(def panel
+  (r/create-class
+   {:component-did-mount (fn [_])
+    :reagent-render (fn [] [:section])}))
+"
+           {:file "src/demo/hsx.cljs"
+            :mode :lint})]
+      (is (= [:hsx/reagent-class-component] (mapv :rule-id findings)))
+      (is (false? (:applied? (first findings)))))))
+
+(deftest emits-rfx-api-compatibility-contracts
+  (testing "re-frame-style signals functions in reg-sub are not valid RFX shape"
+    (let [{:keys [findings]}
+          (engine/process-source
+           "(ns demo.rfx
+  (:require [io.factorhouse.rfx.core :as rfx]))
+(rfx/reg-sub
+ :visible-items
+ (fn [_] [:items])
+ (fn [items _query] items))
+"
+           {:file "src/demo/rfx.cljs"
+            :mode :lint})]
+      (is (= [:rfx/reg-sub-signals-function] (mapv :rule-id findings)))
+      (is (false? (:applied? (first findings))))))
+  (testing "RFX effect handlers should receive the RFX instance and the effect value"
+    (let [{:keys [findings]}
+          (engine/process-source
+           "(ns demo.rfx
+  (:require [io.factorhouse.rfx.core :as rfx]))
+(rfx/reg-fx
+ :toast
+ (fn [message]
+   (js/console.log message)))
+"
+           {:file "src/demo/rfx.cljs"
+            :mode :lint})]
+      (is (= [:rfx/reg-fx-handler-arity] (mapv :rule-id findings)))
+      (is (false? (:applied? (first findings)))))))

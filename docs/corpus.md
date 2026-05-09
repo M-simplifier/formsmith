@@ -29,6 +29,10 @@ The second category matters because a style rewrite tool does not earn trust by 
 - chained cases where more than one rewrite should fire
 - comment-bearing forms that should currently stay suggestion-only for safety
 - semantic rewrites that should only auto-apply in aggressive mode
+- report-only contract fixtures that should produce findings but intentionally
+  remain unchanged
+- CLJS framework boundary contracts for Hiccup, Reagent, re-frame, HSX/RFX,
+  HTTP, Reitit, Malli, and Integrant
 - ClojureDart `.cljd` Flutter UI chains that should normalize to
   `cljd.flutter/nest`
 
@@ -39,6 +43,8 @@ Over time this corpus should grow toward real-world anti-pattern shelves rather 
 - `corpus/basic`: small isolated examples for one rule at a time
 - `corpus/ugly`: intentionally awkward but human-plausible code that should clean up well
 - `corpus/aggressive`: semantic-pattern rewrites that require `fix --aggressive`
+- `corpus/contracts`: report-only contracts where `.before` and `.after` are
+  identical because Formsmith should emit guidance without applying a rewrite
 - `corpus/protected`: cases that are still style-smelly but should remain unchanged until patch quality improves
 - `corpus/clojuredart`: ClojureDart-specific UI style fixtures where `.cljd`
   source must remain parseable and visibly cleaner after the rewrite

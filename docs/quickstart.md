@@ -159,8 +159,8 @@ Inspect namespace and var-level facts:
 clojure -M -m formsmith.main analyze src test
 ```
 
-This is the foundation for analyzer-guarded rewrites and future framework
-profiles. It is informational in the current pre-beta surface.
+This is the foundation for analyzer-guarded rewrites and framework-aware
+contracts. The analyzer output itself is informational.
 
 ## Framework Profiles
 
@@ -171,8 +171,8 @@ clojure -M -m formsmith.main profiles --json src test
 
 Profiles detect known framework surfaces such as re-frame, Reagent, HSX, RFX,
 ClojureDart, Ring, Reitit, Integrant, and Malli from namespace facts. The
-output is informational: it names the active framework profiles and their
-initial canonical guidance.
+profile output is informational; framework enforcement appears as report-only
+contracts unless a target is local enough for safe autofix.
 
 ClojureDart support also includes `.cljd` scanning, string-package requires,
 and the first visible Flutter UI rewrite from nested `.child` chains to

@@ -88,14 +88,18 @@ The initial profiles cover:
 
 - re-frame
 - Reagent
+- HSX
+- RFX
+- ClojureDart
 - Ring
 - Reitit
 - Integrant
 - Malli
 
-Profiles currently emit canonical guidance and evidence only. They are the
-input layer for future framework-level rewrite contracts, not an enforcement
-surface by themselves.
+Profiles emit canonical guidance and evidence. Framework-level enforcement is
+separate: local ClojureDart UI rewrites can autofix, while broader CLJS, HTTP,
+schema, and system lifecycle decisions are emitted as report-only
+`llm-refactor` contracts.
 
 ## Formatter Boundary
 
