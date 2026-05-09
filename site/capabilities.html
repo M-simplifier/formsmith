@@ -1,0 +1,1683 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>formsmith capability atlas</title>
+    <meta name="description" content="A public catalog of the current formsmith rewrite, warning, framework profile, and protected no-fix surface.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23101419'/%3E%3Ctext x='14' y='40' fill='%23ffffff' font-family='monospace' font-size='22'%3Efs%3C/text%3E%3C/svg%3E">
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #16181d;
+        --muted: #667085;
+        --paper: #f7f6f1;
+        --surface: #ffffff;
+        --surface-2: #f0eee6;
+        --line: #d7d2c5;
+        --code: #101419;
+        --code-2: #17202a;
+        --green: #176b51;
+        --blue: #235d92;
+        --ruby: #9d3750;
+        --amber: #8a6116;
+        --violet: #5a4a91;
+        --shadow: 0 18px 56px rgb(22 24 29 / 10%);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.55;
+      }
+
+      pre,
+      code,
+      input,
+      select {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 8;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 12px clamp(16px, 4vw, 42px);
+        border-bottom: 1px solid rgb(255 255 255 / 14%);
+        color: #fff;
+        background: rgb(16 20 25 / 92%);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+        color: inherit;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .mark {
+        display: inline-grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 1px solid rgb(255 255 255 / 26%);
+        background: rgb(255 255 255 / 10%);
+        font-size: 13px;
+      }
+
+      .top-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+        color: rgb(255 255 255 / 78%);
+        font-size: 12px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 4px 9px;
+        border: 1px solid rgb(255 255 255 / 18%);
+        border-radius: 999px;
+        background: rgb(255 255 255 / 8%);
+        white-space: nowrap;
+      }
+
+      main {
+        padding: clamp(22px, 4vw, 48px);
+      }
+
+      .dashboard {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
+        gap: clamp(22px, 4vw, 44px);
+        align-items: start;
+      }
+
+      .panel {
+        min-width: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        overflow-wrap: anywhere;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(38px, 6vw, 76px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        font-size: clamp(24px, 3vw, 38px);
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.22;
+        letter-spacing: 0;
+      }
+
+      .lede {
+        max-width: 780px;
+        margin: 18px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .scope-note {
+        max-width: 780px;
+        margin: 14px 0 0;
+        padding-left: 12px;
+        border-left: 3px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .stat {
+        min-width: 0;
+        padding: 14px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        box-shadow: 0 8px 28px rgb(22 24 29 / 6%);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 760;
+        text-transform: uppercase;
+      }
+
+      .controls {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 160px 150px;
+        gap: 10px;
+        margin: 24px 0;
+      }
+
+      input,
+      select {
+        min-width: 0;
+        min-height: 42px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 9px 11px;
+        color: var(--ink);
+        background: #fff;
+        font-size: 14px;
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 20px;
+      }
+
+      .legend-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0 0 20px;
+      }
+
+      .legend-box {
+        min-width: 0;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+
+      .legend-box h3 {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+        background: #fbfaf6;
+        font-size: 15px;
+      }
+
+      .legend-list {
+        display: grid;
+        gap: 0;
+      }
+
+      .legend-row {
+        display: grid;
+        grid-template-columns: 160px minmax(0, 1fr);
+        gap: 12px;
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .legend-row:last-child {
+        border-bottom: 0;
+      }
+
+      .legend-key {
+        color: var(--ink);
+        font-weight: 800;
+      }
+
+      .tag,
+      .mini-tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 25px;
+        padding: 3px 8px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .mini-tag {
+        min-height: 22px;
+        font-size: 11px;
+        color: #fff;
+        background: #556070;
+      }
+
+      .tag.default {
+        color: var(--green);
+        background: #e0f0e6;
+      }
+
+      .tag.aggressive {
+        color: var(--blue);
+        background: #e2edf7;
+      }
+
+      .tag.contract {
+        color: var(--ruby);
+        background: #f6e2e7;
+      }
+
+      .tag.profile {
+        color: var(--violet);
+        background: #ece7f7;
+      }
+
+      .tag.protected {
+        color: var(--amber);
+        background: #f5ead0;
+      }
+
+      .matrix {
+        overflow: auto;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        font-size: 12.5px;
+      }
+
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 31%;
+      }
+
+      th:nth-child(2),
+      td:nth-child(2) {
+        width: 19%;
+      }
+
+      th:nth-child(3),
+      td:nth-child(3) {
+        width: 22%;
+      }
+
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 28%;
+      }
+
+      th,
+      td {
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        position: sticky;
+        top: 0;
+        color: #fff;
+        background: var(--code-2);
+        font-size: 12px;
+      }
+
+      td:first-child {
+        font-weight: 800;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        min-width: 0;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        box-shadow: 0 14px 48px rgb(22 24 29 / 8%);
+      }
+
+      .card-header {
+        display: grid;
+        gap: 9px;
+        padding: 16px;
+        border-bottom: 1px solid var(--line);
+        background: #fbfaf6;
+      }
+
+      .card-title-row,
+      .card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .message {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .code-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        min-height: 180px;
+      }
+
+      .code-box {
+        min-width: 0;
+        background: var(--code);
+        color: #dce8ef;
+      }
+
+      .code-box + .code-box {
+        border-left: 1px solid #2e3844;
+      }
+
+      .code-label {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 9px 12px;
+        border-bottom: 1px solid #2e3844;
+        color: #f2f6f8;
+        background: #151b22;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      pre {
+        margin: 0;
+        overflow: auto;
+      }
+
+      .code-box pre {
+        padding: 14px;
+      }
+
+      code {
+        white-space: pre;
+        font-size: 12.8px;
+        line-height: 1.65;
+      }
+
+      .notes {
+        display: grid;
+        gap: 8px;
+        padding: 13px 16px 16px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .notes strong {
+        color: var(--ink);
+      }
+
+      .section {
+        margin-top: clamp(34px, 6vw, 72px);
+      }
+
+      .profile-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .profile-item {
+        min-width: 0;
+        padding: 14px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+      }
+
+      .profile-item p {
+        margin: 7px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .empty {
+        display: none;
+        padding: 18px;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        background: var(--surface);
+      }
+
+      @media (max-width: 1120px) {
+        .dashboard,
+        .cards,
+        .legend-grid,
+        .profile-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .topbar {
+          position: static;
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .top-meta {
+          justify-content: flex-start;
+        }
+
+        .stats,
+        .controls,
+        .code-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .code-box + .code-box {
+          border-left: 0;
+          border-top: 1px solid #2e3844;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./index.html" aria-label="formsmith home">
+        <span class="mark">fs</span>
+        <span>formsmith capability atlas</span>
+      </a>
+      <div class="top-meta" aria-label="metadata">
+        <a class="pill" href="./index.html">home</a>
+        <span class="pill">official public page</span>
+        <span class="pill">current capability surface</span>
+        <span class="pill">2026-05-09</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="dashboard" aria-labelledby="title">
+        <div class="panel">
+          <h1 id="title">Current public rewrite and finding surface.</h1>
+          <p class="lede">
+            A public capability catalog for representative rewrite, warning,
+            framework profile, and protected no-fix cases currently exposed by
+            formsmith.
+          </p>
+          <p class="scope-note">
+            This page is a compact public map of the supported surface, not a
+            full syntax-variant reference. The CLI, tests, corpus, and release
+            docs remain authoritative for exact behavior and safety boundaries.
+          </p>
+          <div class="stats" aria-label="summary">
+            <div class="stat"><strong id="stat-patterns">0</strong><span>patterns</span></div>
+            <div class="stat"><strong>20</strong><span>rule families</span></div>
+            <div class="stat"><strong>9</strong><span>profiles</span></div>
+            <div class="stat"><strong>5</strong><span>output modes</span></div>
+          </div>
+        </div>
+
+        <div class="panel matrix" aria-label="rule matrix">
+          <table>
+            <thead>
+              <tr>
+                <th>Rule / Finding</th>
+                <th>Mode</th>
+                <th>Tier</th>
+                <th>What It Means</th>
+              </tr>
+            </thead>
+            <tbody id="matrix-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="examples-title">
+        <h2 id="examples-title">Before / After And Findings</h2>
+        <div class="controls" aria-label="filters">
+          <input id="search" type="search" placeholder="Search rule, message, code, ClojureDart, blank?, contract...">
+          <select id="mode-filter" aria-label="mode filter">
+            <option value="all">all modes</option>
+            <option value="default">default autofix</option>
+            <option value="aggressive">guarded/aggressive</option>
+            <option value="contract">contract / warning</option>
+            <option value="profile">profile</option>
+            <option value="protected">protected</option>
+          </select>
+          <select id="lang-filter" aria-label="language filter">
+            <option value="all">all languages</option>
+            <option value="clj">CLJ</option>
+            <option value="cljs">CLJS</option>
+            <option value="cljd">CLJD</option>
+            <option value="profile">profile</option>
+          </select>
+        </div>
+        <div class="legend" aria-label="legend">
+          <span class="tag default">default</span>
+          <span class="tag aggressive">guarded/aggressive</span>
+          <span class="tag contract">contract</span>
+          <span class="tag profile">profile</span>
+          <span class="tag protected">protected</span>
+        </div>
+        <div class="legend-grid" aria-label="mode and tier legend">
+          <div class="legend-box">
+            <h3>Mode</h3>
+            <div class="legend-list">
+              <div class="legend-row"><span class="legend-key">default autofix</span><span>Runs in normal fix/check and is intended for CI enforcement.</span></div>
+              <div class="legend-row"><span class="legend-key">guarded/aggressive</span><span>Applies only with stronger flags or analyzer-backed local facts.</span></div>
+              <div class="legend-row"><span class="legend-key">contract</span><span>Reports a structured LLM/human refactor task instead of rewriting.</span></div>
+              <div class="legend-row"><span class="legend-key">profile</span><span>Detects framework context and attaches canonical guidance.</span></div>
+              <div class="legend-row"><span class="legend-key">protected</span><span>Shows cases Formsmith intentionally leaves unchanged.</span></div>
+            </div>
+          </div>
+          <div class="legend-box">
+            <h3>Tier</h3>
+            <div class="legend-list">
+              <div class="legend-row"><span class="legend-key">standard-canonical-fix</span><span>Conservative local rewrite suitable for default autofix.</span></div>
+              <div class="legend-row"><span class="legend-key">analyzer-guarded-fix</span><span>Useful rewrite that needs explicit opt-in or static guard facts.</span></div>
+              <div class="legend-row"><span class="legend-key">llm-refactor</span><span>Improvement is real, but behavior or architecture depends on context.</span></div>
+              <div class="legend-row"><span class="legend-key">no-autofix</span><span>Detected shape is deliberately not rewritten for safety.</span></div>
+              <div class="legend-row"><span class="legend-key">informational</span><span>Context or profile signal, not a direct code change.</span></div>
+            </div>
+          </div>
+        </div>
+        <div id="cards" class="cards"></div>
+        <div id="empty" class="empty">No matching patterns.</div>
+      </section>
+
+      <section class="section" aria-labelledby="profiles-title">
+        <h2 id="profiles-title">Framework Profiles</h2>
+        <div class="profile-grid" id="profiles"></div>
+      </section>
+    </main>
+
+    <script>
+      const patterns = [
+        {
+          id: "if/not-condition",
+          family: "condition/negated-form",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "if with a negated test can be written as if-not",
+          before: `(let [ready? false]\n  (if (not ready?) :pending :ready))`,
+          after: `(let [ready? false]\n  (if-not ready? :pending :ready))`,
+          note: "Default fix. Simple `(not ...)` tests are moved to the canonical Clojure negated form."
+        },
+        {
+          id: "when/not-condition",
+          family: "condition/negated-form",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "when with a negated test can be written as when-not",
+          before: `(when (not ready?)\n  (println :waiting))`,
+          after: `(when-not ready?\n  (println :waiting))`,
+          note: "Also appears as a follow-up rewrite after single-clause `cond` simplification."
+        },
+        {
+          id: "cond/true-else",
+          family: "cond/true-else",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "The final cond catch-all should use :else",
+          before: `(cond\n  ready? :ready\n  true :waiting)`,
+          after: `(cond\n  ready? :ready\n  :else :waiting)`,
+          note: "`true` catch-all branches are normalized to the intention-revealing `:else` marker."
+        },
+        {
+          id: "cond/two-clause-if",
+          family: "cond/minimal-form",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "Two-clause cond with a catch-all can be written as if",
+          before: `(let [ready? false]\n  (cond ready? :ready :else :waiting))`,
+          after: `(let [ready? false]\n  (if ready? :ready :waiting))`,
+          note: "A two-branch `cond` with a catch-all is reduced to `if`."
+        },
+        {
+          id: "cond/single-clause-when",
+          family: "cond/minimal-form",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "Single-clause cond can be written as when",
+          before: `(let [ai-available false]\n  (cond (not ai-available)\n    [:div.badge "service key not set"]))`,
+          after: `(let [ai-available false]\n  (when-not ai-available\n    [:div.badge "service key not set"]))`,
+          note: "`cond` becomes `when`, then the negated test is normalized to `when-not`."
+        },
+        {
+          id: "let/empty-bindings",
+          family: "let/empty-bindings",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "Empty let bindings can be removed",
+          before: `(let []\n  (render state))`,
+          after: `(render state)`,
+          note: "Removes a `let` that has only an empty binding vector."
+        },
+        {
+          id: "let/nested-let",
+          family: "let/nested-let",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "Nested let can be flattened into a single let",
+          before: `(let [a 1]\n  (let [b 2]\n    (+ a b)))`,
+          after: `(let [a 1 b 2]\n  (+ a b))`,
+          note: "Flattens unnecessary nesting into a single binding block."
+        },
+        {
+          id: "redundant-do/body",
+          family: "redundant-do/body",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "Redundant do wrapper can be flattened",
+          before: `(let [x 1]\n  (do\n    (println x)\n    (println (inc x))))`,
+          after: `(let [x 1]\n  (println x)\n  (println (inc x)))`,
+          note: "Splices a redundant `do` when it appears in a body-splicing position."
+        },
+        {
+          id: "if/redundant-do-branch",
+          family: "if/redundant-do-branch",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "Single-expression do wrappers in if branches can be flattened",
+          before: `(if ok?\n  (do :yes)\n  (do :no))`,
+          after: `(if ok?\n  :yes\n  :no)`,
+          note: "Reader-sensitive contexts such as syntax-quote and unquote are protected."
+        },
+        {
+          id: "str/redundant-string-literal",
+          family: "str/redundant-string-literal",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "A single string literal does not need str",
+          before: `(str "ready")`,
+          after: `"ready"`,
+          note: "Removes `str` when it wraps a single string literal."
+        },
+        {
+          id: "get/keyword-lookup",
+          family: "get/keyword-lookup",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "get with a keyword key can be written as keyword invocation",
+          before: `(get user :name)`,
+          after: `(:name user)`,
+          note: "Moves keyword lookups to idiomatic keyword invocation."
+        },
+        {
+          id: "thread/first-chain",
+          family: "core/idioms",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "Nested data updates can be written as a thread-first pipeline",
+          before: `(update (assoc user :name name) :count inc)`,
+          after: `(-> user (assoc :name name) (update :count inc))`,
+          note: "Introduces `->` where the same data value flows through assoc/update style calls."
+        },
+        {
+          id: "thread/last-chain",
+          family: "core/idioms",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "Nested sequence transforms can be written as a thread-last pipeline",
+          before: `(map :id (filter active? users))`,
+          after: `(->> users (filter active?) (map :id))`,
+          note: "Introduces `->>` for nested sequence transformations."
+        },
+        {
+          id: "collection/mapv-over-vec-map",
+          family: "core/idioms",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "vec over map can be written as mapv",
+          before: `(vec (map :id users))`,
+          after: `(mapv :id users)`,
+          note: "Also covers `into []` over `map`, and the analogous `filterv` forms."
+        },
+        {
+          id: "collection/filterv-over-vec-filter",
+          family: "core/idioms",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "vec over filter can be written as filterv",
+          before: `(vec (filter active? users))`,
+          after: `(filterv active? users)`,
+          note: "Makes eager vector realization explicit without a separate lazy sequence."
+        },
+        {
+          id: "collection/filterv-over-into-filter",
+          family: "core/idioms",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "into [] over filter can be written as filterv",
+          before: `(into [] (filter active? users))`,
+          after: `(filterv active? users)`,
+          note: "Covers the `into []` realization variant separately from the `vec` variant."
+        },
+        {
+          id: "collection/mapv-over-into-map",
+          family: "core/idioms",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "into [] over map can be written as mapv",
+          before: `(into [] (map :id users))`,
+          after: `(mapv :id users)`,
+          note: "The `vec` and `into []` realization variants converge to the same canonical vector-producing form."
+        },
+        {
+          id: "collection/keep-over-filter-map",
+          family: "core/idioms",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "filter some? over map can be written as keep",
+          before: `(filter some? (map normalize users))`,
+          after: `(keep normalize users)`,
+          note: "Compacts the common map-then-remove-nil pipeline."
+        },
+        {
+          id: "map/update-over-assoc",
+          family: "core/idioms",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "assoc of a function over the current value can be written as update",
+          before: `(assoc user :count (inc (:count user)))`,
+          after: `(update user :count inc)`,
+          note: "Also covers the nested `assoc-in` / `update-in` shape."
+        },
+        {
+          id: "map/update-in-over-assoc-in",
+          family: "core/idioms",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "assoc-in of a function over the current nested value can be written as update-in",
+          before: `(assoc-in state [:ui :count]\n  (inc (get-in state [:ui :count])))`,
+          after: `(update-in state [:ui :count] inc)`,
+          note: "The guarded shape requires the assigned value to be a direct unary function call over the same nested path."
+        },
+        {
+          id: "binding/assoc-destructure",
+          family: "core/idioms",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "Repeated keyword lookups from one map can be written with associative destructuring",
+          before: `(let [id (:id user) name (:name user)]\n  [id name])`,
+          after: `(let [{:keys [id name]} user]\n  [id name])`,
+          note: "Only applies when the whole binding vector is a simple same-map keyword extraction."
+        },
+        {
+          id: "defn/over-def-fn",
+          family: "core/idioms",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "def of an anonymous fn can be written as defn",
+          before: `(def greet (fn [name] (str "hi " name)))`,
+          after: `(defn greet [name] (str "hi " name))`,
+          note: "Keeps the var definition in the conventional function-definition form."
+        },
+        {
+          id: "nil/eq",
+          family: "nil/predicate",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "= nil can be written as nil?",
+          before: `(= nil value)`,
+          after: `(nil? value)`,
+          note: "Normalizes nil checks to the predicate form."
+        },
+        {
+          id: "nil/not-eq",
+          family: "nil/predicate",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "not= nil can be written as some?",
+          before: `(not= nil value)`,
+          after: `(some? value)`,
+          note: "Normalizes non-nil checks to `some?`."
+        },
+        {
+          id: "empty/trim-or-blank",
+          family: "blank/idioms",
+          mode: "default",
+          lang: "clj",
+          tier: "standard-canonical-fix",
+          message: "empty? over trim(or ... \"\") can be written as blank?",
+          before: `(defn blankish? [text]\n  (empty? (str/trim (or text ""))))`,
+          after: `(defn blankish? [text]\n  (str/blank? text))`,
+          note: "Default-safe only when `or \"\"` makes the nil semantics explicit."
+        },
+        {
+          id: "condition/and-seq-not-empty",
+          family: "condition/and-seq",
+          mode: "aggressive",
+          lang: "clj",
+          tier: "analyzer-guarded-fix",
+          message: "boolean test that uses seq inside and can be written with not-empty",
+          before: `(defn build-query [q]\n  (cond-> []\n    (and q (seq q)) (conj q)))`,
+          after: `(defn build-query [q]\n  (cond-> []\n    (not-empty q) (conj q)))`,
+          note: "Available in `--aggressive` and in selected guarded paths."
+        },
+        {
+          id: "if/seq-if-let",
+          family: "if/seq-test",
+          mode: "aggressive",
+          lang: "clj",
+          tier: "analyzer-guarded-fix",
+          message: "if that tests seq can be written as if-let with not-empty",
+          before: `(let [params ["status=ready" "sort=priority-desc"]]\n  (if (seq params)\n    (vec params)\n    []))`,
+          after: `(let [params ["status=ready" "sort=priority-desc"]]\n  (if-let [params (not-empty params)] (vec params) []))`,
+          note: "Turns a truthy collection test into a binding-aware form."
+        },
+        {
+          id: "when/seq-when-let",
+          family: "when/seq-test",
+          mode: "aggressive",
+          lang: "clj",
+          tier: "analyzer-guarded-fix",
+          message: "when that tests seq can be written as when-let with not-empty",
+          before: `(when (seq items)\n  (render-list items))`,
+          after: `(when-let [items (not-empty items)]\n  (render-list items))`,
+          note: "Compacts a `when` whose test and body refer to the same collection value."
+        },
+        {
+          id: "if/seq-not-empty-or",
+          family: "if/seq-test",
+          mode: "aggressive",
+          lang: "clj",
+          tier: "analyzer-guarded-fix",
+          message: "if that returns the tested form can be written with not-empty and or",
+          before: `(let [prompt "hello"\n      fallback "world"]\n  (if (seq prompt)\n    prompt\n    fallback))`,
+          after: `(let [prompt "hello"\n      fallback "world"]\n  (or (not-empty prompt) fallback))`,
+          note: "Short form for cases where the tested value itself is returned by the then branch."
+        },
+        {
+          id: "when/seq-trim-blank",
+          family: "blank/idioms",
+          mode: "aggressive",
+          lang: "clj",
+          tier: "analyzer-guarded-fix",
+          message: "when over seq(trim(or ...)) can be written as when-not blank?",
+          before: `(defn- create-ai-comment! [text]\n  (when (seq (str/trim (or text "")))\n    (println text)))`,
+          after: `(defn- create-ai-comment! [text]\n  (when-not (str/blank? text) (println text)))`,
+          note: "Normalizes the blankness idiom across the surrounding conditional."
+        },
+        {
+          id: "if/blank-or",
+          family: "blank/idioms",
+          mode: "aggressive",
+          lang: "clj",
+          tier: "analyzer-guarded-fix",
+          message: "if with a blank? test and true branch can be written as or",
+          before: `(defn- matches-query? [item q]\n  (if (str/blank? q)\n    true\n    (matches-query* item q)))`,
+          after: `(defn- matches-query? [item q]\n  (or (str/blank? q) (matches-query* item q)))`,
+          note: "Reduces a boolean true branch to `or`."
+        },
+        {
+          id: "if/nil-then-branch",
+          family: "if/nil-branch",
+          mode: "aggressive",
+          lang: "clj",
+          tier: "analyzer-guarded-fix",
+          message: "if with a nil then branch can be written as when-not",
+          before: `(let [ok? false]\n  (if ok?\n    nil\n    (println :x)))`,
+          after: `(let [ok? false]\n  (when-not ok? (println :x)))`,
+          note: "Moves `if` forms with a nil branch to the appropriate `when` family."
+        },
+        {
+          id: "if/nil-else-branch",
+          family: "if/nil-branch",
+          mode: "aggressive",
+          lang: "clj",
+          tier: "analyzer-guarded-fix",
+          message: "if with a nil else branch can be written as when",
+          before: `(if ok?\n  (save!)\n  nil)`,
+          after: `(when ok? (save!))`,
+          note: "An `if` whose else branch is nil becomes `when`."
+        },
+        {
+          id: "empty/trim-blank",
+          family: "blank/idioms",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "empty? over trim can usually be written as blank?",
+          before: `(empty? (str/trim value))`,
+          after: `contract-id=llm-refactor:empty/trim-blank:...\nblocked-by=empty? over trim throws on nil, while blank? treats nil as blank.\nllm-task=Determine the intended nil semantics before rewriting.`,
+          note: "Contract-only because the nil semantics are not necessarily equivalent."
+        },
+        {
+          id: "lazy/doall-map-side-effect",
+          family: "core/idioms",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "doall/dorun over map often indicates a side-effecting traversal",
+          before: `(doall (map send! users))`,
+          after: `suggested-source=(run! send! users)\nblocked-by=doall returns a realized sequence while run! returns nil.`,
+          note: "Useful review signal, not a behavior-preserving autofix."
+        },
+        {
+          id: "interop/doto-candidate",
+          family: "core/idioms",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Object construction followed by method calls and returning the object may want doto",
+          before: `(let [builder (StringBuilder.)]\n  (.append builder "a")\n  (.append builder "b")\n  builder)`,
+          after: `suggested-source=(doto init-expr (.method args...))\nblocked-by=method return values and reflection/type hints need review.`,
+          note: "Flags an interop style candidate without rewriting resource-sensitive code."
+        },
+        {
+          id: "namespace/canonical-alias",
+          family: "namespace/hygiene",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Known namespaces should use canonical aliases",
+          before: `(ns demo.core\n  (:require [clojure.string :as string]))`,
+          after: `suggested-source=[clojure.string :as str]\nblocked-by=all alias usages in the namespace must be renamed together.`,
+          note: "Covers common aliases for Clojure core libs and supported framework profiles."
+        },
+        {
+          id: "namespace/refer-all",
+          family: "namespace/hygiene",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "refer-all should be made explicit",
+          before: `(ns demo.core\n  (:require [demo.util :refer :all]))`,
+          after: `suggested-source=[demo.util :as util]\nblocked-by=used imported names must be mapped before narrowing.`,
+          note: "The same namespace rule also flags `:use`, duplicate requires, and src/test ns-path mismatch."
+        },
+        {
+          id: "namespace/use-clause",
+          family: "namespace/hygiene",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "ns :use clauses should be replaced with explicit :require forms",
+          before: `(ns demo.core\n  (:use demo.util))`,
+          after: `suggested-source=(:require [some.ns :as alias])\nblocked-by=imported vars must be mapped to explicit aliases or narrow refer lists.`,
+          note: "`:use` hides ownership at the namespace boundary, so Formsmith emits an explicit migration contract."
+        },
+        {
+          id: "namespace/duplicate-require",
+          family: "namespace/hygiene",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Duplicate require entries should be collapsed",
+          before: `(ns demo.core\n  (:require [demo.a :as a]\n            [demo.a :as a2]))`,
+          after: `suggested-source=one require entry per namespace\nblocked-by=aliases and refer lists may need manual consolidation.`,
+          note: "Reports duplicate require targets once at the namespace form."
+        },
+        {
+          id: "namespace/file-path-mismatch",
+          family: "namespace/hygiene",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Namespace name should match the source path suffix",
+          before: `;; file: src/demo/core.clj\n(ns demo.not-core)`,
+          after: `suggested-source=demo/core.clj or (ns demo.core)\nblocked-by=moving files or renaming namespaces updates require paths across the project.`,
+          note: "Only applies to source-like paths such as `src/` and `test/`; fixtures are ignored."
+        },
+        {
+          id: "clojuredart/widget-child-chain",
+          family: "clojuredart/flutter-ui",
+          mode: "default",
+          lang: "cljd",
+          tier: "standard-canonical-fix",
+          message: "Nested Flutter :child/.child widget chains can be flattened with cljd.flutter/nest",
+          before: `(defn fab [open toggle]\n  (m/IgnorePointer\n    .ignoring (boolean @open)\n    .child\n    (m/AnimatedContainer\n      .duration (m/Duration .milliseconds 250)\n      .child\n      (m/FloatingActionButton\n        .onPressed toggle\n        .child\n        (m/Icon m.Icons/create)))))`,
+          after: `(defn fab [open toggle]\n  (f/nest\n   (m/IgnorePointer .ignoring (boolean @open))\n   (m/AnimatedContainer .duration (m/Duration .milliseconds 250))\n   (m/FloatingActionButton .onPressed toggle)\n   (m/Icon m.Icons/create)))`,
+          note: "Default-safe only for `.cljd` files that explicitly require `[cljd.flutter :as f]`."
+        },
+        {
+          id: "clojuredart/deprecated-flutter-alpha",
+          family: "clojuredart/flutter-ui",
+          mode: "contract",
+          lang: "cljd",
+          tier: "llm-refactor",
+          message: "Deprecated cljd.flutter alpha namespaces should be migrated to cljd.flutter",
+          before: `(ns app.mobile\n  (:require ["package:flutter/material.dart" :as m]\n            [cljd.flutter.alpha :as f]))`,
+          after: `contract only\nblocked-by=alpha API usage may not be a direct namespace swap.\nacceptance=ClojureDart build or widget tests pass.`,
+          note: "Migration is desirable, but local static analysis cannot prove direct API equivalence."
+        },
+        {
+          id: "clojuredart/widget-local-atom-state",
+          family: "clojuredart/flutter-ui",
+          mode: "contract",
+          lang: "cljd",
+          tier: "llm-refactor",
+          message: "Local atom state inside f/widget should usually use the :state option",
+          before: `(f/widget\n  (let [open (atom false)]\n    (m/Text "x")))`,
+          after: `suggested-source=(f/widget :state [state initial-value] ...)\nblocked-by=deref and update sites must move together.`,
+          note: "Starts ClojureDart-specific quality enforcement beyond universal Clojure rules."
+        },
+        {
+          id: "clojuredart/controller-without-widget-with",
+          family: "clojuredart/flutter-ui",
+          mode: "contract",
+          lang: "cljd",
+          tier: "llm-refactor",
+          message: "Flutter controllers should be reviewed for f/widget :with lifecycle ownership",
+          before: `(m/TextEditingController.)`,
+          after: `suggested-source=(f/widget :with [controller (m/TextEditingController.)] ...)\nblocked-by=ownership and disposal semantics need surrounding context.`,
+          note: "Also covers ScrollController, PageController, and TabController."
+        },
+        {
+          id: "clojuredart/animation-controller-ticker",
+          family: "clojuredart/flutter-ui",
+          mode: "contract",
+          lang: "cljd",
+          tier: "llm-refactor",
+          message: "AnimationController ownership should be reviewed for f/widget :ticker or :tickers",
+          before: `(m/AnimationController. .duration duration)`,
+          after: `suggested-source=(f/widget :ticker ticker :with [controller (m/AnimationController. .vsync ticker ...)] ...)\nblocked-by=ticker ownership and disposal require surrounding widget lifecycle context.`,
+          note: "ClojureDart-specific lifecycle contract for animation-heavy Flutter code."
+        },
+        {
+          id: "clojuredart/widget-of-context-helper",
+          family: "clojuredart/flutter-ui",
+          mode: "contract",
+          lang: "cljd",
+          tier: "llm-refactor",
+          message: "Widget.of(context) lookups should be reviewed for f/widget :inherit or :get",
+          before: `(m/Theme.of context)`,
+          after: `suggested-source=(f/widget :context ctx :inherit [theme (m/Theme.of ctx)] ...)\nblocked-by=rebuild semantics depend on the inherited dependency.`,
+          note: "Points Flutter inherited-context code toward explicit f/widget options."
+        },
+        {
+          id: "clojuredart/builder-to-widget",
+          family: "clojuredart/flutter-ui",
+          mode: "contract",
+          lang: "cljd",
+          tier: "llm-refactor",
+          message: "Flutter Builder and StatefulBuilder forms are candidates for f/widget",
+          before: `(m/Builder\n  .builder\n  (fn [context]\n    (m/Text "x")))`,
+          after: `suggested-source=(f/widget :context context ...)\nblocked-by=callback arity and captured state determine the right f/widget options.`,
+          note: "Flags callback-wrapper UI code that may be clearer as a direct `f/widget` body."
+        },
+        {
+          id: "clojuredart/widget-body-extraction",
+          family: "clojuredart/flutter-ui",
+          mode: "contract",
+          lang: "cljd",
+          tier: "llm-refactor",
+          message: "Large f/widget bodies should be reviewed for component extraction",
+          before: `(f/widget\n  a b c d e f g h i)`,
+          after: `suggested-source=(defn smaller-widget [...] (f/widget ...))`,
+          note: "A high-level ClojureDart UI structure warning, not an automatic split."
+        },
+        {
+          id: "hsx/local-ratom-state",
+          family: "hsx-rfx/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "HSX components should use React local state hooks instead of Reagent ratoms",
+          before: `(ns demo.hsx\n  (:require [io.factorhouse.hsx.core :as hsx]\n            [reagent.core :as r]))\n\n(defn counter []\n  (let [n (r/atom 0)]\n    [:button {:on-click #(swap! n inc)} @n]))`,
+          after: `suggested-source=(let [[state set-state] (react/useState initial-value)] ...)\nblocked-by=event handlers and surrounding bindings must be migrated together.`,
+          note: "Finds Reagent ratom local state inside an HSX profile."
+        },
+        {
+          id: "hsx/reagent-as-element-entrypoint",
+          family: "hsx-rfx/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "HSX entrypoints should use hsx/create-element instead of Reagent as-element",
+          before: `(.render root (r/as-element [:main "ok"]))`,
+          after: `suggested-source=(hsx/create-element component-form)\nblocked-by=root/render call shape determines the exact replacement.`,
+          note: "Keeps HSX projects from carrying Reagent entrypoint idioms forward."
+        },
+        {
+          id: "hsx/reagent-class-component",
+          family: "hsx-rfx/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "Reagent class-style components should be migrated to React function components for HSX",
+          before: `(r/create-class {:component-did-mount (fn [_])\n                 :reagent-render (fn [] [:section])})`,
+          after: `suggested-source=(defn component [...] ...)\nblocked-by=lifecycle methods and local state need hooks or an explicit boundary.`,
+          note: "Flags the component-form migration without pretending it is local."
+        },
+        {
+          id: "rfx/implicit-global-dispatch",
+          family: "hsx-rfx/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "RFX edge dispatches should make the RFX context boundary explicit",
+          before: `(ns demo.rfx\n  (:require [io.factorhouse.rfx.core :as rfx]))\n\n(defn socket-message! [event]\n  (rfx/dispatch event))`,
+          after: `suggested-source=(rfx/dispatch rfx-context event)\nblocked-by=component path or external integration edge cannot be proven locally.`,
+          note: "Contract-only because the RFX context boundary is an application design decision."
+        },
+        {
+          id: "rfx/reg-sub-signals-function",
+          family: "hsx-rfx/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "RFX supports subscription vector sugar, but not re-frame signal functions",
+          before: `(rfx/reg-sub :visible-items\n  (fn [_] [:items])\n  (fn [items _query] items))`,
+          after: `suggested-source=(rfx/reg-sub :id :<- [:source] (fn [source query] ...))`,
+          note: "Captures a concrete RFX compatibility limit."
+        },
+        {
+          id: "rfx/reg-fx-handler-arity",
+          family: "hsx-rfx/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "RFX reg-fx handlers should accept the RFX instance and effect value",
+          before: `(rfx/reg-fx :toast\n  (fn [message]\n    (js/console.log message)))`,
+          after: `suggested-source=(rfx/reg-fx ::id (fn [rfx value] ...))`,
+          note: "Enforces the RFX handler shape as a review contract."
+        },
+        {
+          id: "namespace/mixed-framework-responsibility",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Namespaces that mix several framework surfaces should be reviewed for responsibility boundaries",
+          before: `(ns demo.mixed\n  (:require [re-frame.core :as rf]\n            [reitit.ring :as ring]\n            [malli.core :as m]))`,
+          after: `suggested-source=Split UI/state/http/schema/system responsibilities into named namespaces`,
+          note: "A high-level boundary signal; the correct split depends on the domain."
+        },
+        {
+          id: "hiccup/attribute-shape",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "Hiccup class attributes with space-delimited strings should be reviewed for a project-local class composition helper",
+          before: `[:div {:class "panel panel-active"} "ok"]`,
+          after: `suggested-source=[:div {:class (classes ...)} ...]`,
+          note: "Does not choose a CSS helper; it forces one project convention to be visible."
+        },
+        {
+          id: "reagent/local-ratom-state",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "Reagent local ratom state should be reviewed for ownership and component boundary clarity",
+          before: `(defn counter []\n  (let [n (r/atom 0)]\n    [:button @n]))`,
+          after: `blocked-by=ownership, reset behavior, and form-2 lifetimes need surrounding component context.`,
+          note: "Separate from HSX ratom migration; plain Reagent may keep ratoms when ownership is clear."
+        },
+        {
+          id: "reagent/form-2-component",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "Reagent form-2 components should be reviewed for state lifetime and naming clarity",
+          before: `(defn panel [title]\n  (fn []\n    [:section title]))`,
+          after: `suggested-source=(defn component [args] (let [...] (fn [...] ...)))`,
+          note: "Flags implicit render-closure lifetime for explicit review."
+        },
+        {
+          id: "re-frame/reg-event-db-side-effect",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "reg-event-db handlers should stay pure; side effects belong in reg-event-fx or effects",
+          before: `(rf/reg-event-db\n :save\n (fn [db [_ value]]\n   (rf/dispatch [:saved value])\n   db))`,
+          after: `suggested-source=(rf/reg-event-fx ::event (fn [{:keys [db]} event] {:db db :fx [...] }))`,
+          note: "A concrete review-elimination target for re-frame purity."
+        },
+        {
+          id: "re-frame/reg-sub-signals-shape",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "reg-sub signal functions should be reviewed for subscription graph readability",
+          before: `(rf/reg-sub\n :visible\n (fn [_] [:items])\n (fn [items _] items))`,
+          after: `suggested-source=(rf/reg-sub ::id :<- [::source] (fn [source query] ...))`,
+          note: "Prefers scan-friendly dependency shape when it preserves query semantics."
+        },
+        {
+          id: "re-frame/mixed-registration-namespace",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "Namespaces that mix re-frame events, effects, and subscriptions should be reviewed for placement",
+          before: `(rf/reg-event-db :save (fn [db _] db))\n(rf/reg-sub :items (fn [db _] (:items db)))`,
+          after: `suggested-source=app.events / app.effects / app.subs`,
+          note: "Flags module placement without forcing tiny projects to split mechanically."
+        },
+        {
+          id: "hsx/react-hook-deps",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "HSX React effect hooks should make dependency decisions explicit",
+          before: `(react/useEffect (fn [] (js/console.log "mounted")))`,
+          after: `suggested-source=(react/useEffect effect-fn deps)`,
+          note: "Forces hook dependency decisions into code or a documented exception."
+        },
+        {
+          id: "hsx/inline-component-identity",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "Inline anonymous HSX components should be reviewed for stable identity and memoization boundaries",
+          before: `(hsx/create-element (fn [] [:div]))`,
+          after: `suggested-source=(defn NamedComponent [props] ...)`,
+          note: "Targets React identity and memoization readability."
+        },
+        {
+          id: "ring/raw-response-map",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Raw Ring response maps should be reviewed for response helper consistency",
+          before: `{:status 200 :body "ok"}`,
+          after: `suggested-source=(response/status (response/response body) status)`,
+          note: "Keeps response construction consistent while preserving headers and streaming semantics."
+        },
+        {
+          id: "ring/middleware-shape",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Ring middleware should make handler wrapping, arity, and order easy to review",
+          before: `(defn wrap-auth [handler]\n  (fn [request]\n    (handler request)))`,
+          after: `suggested-source=(defn wrap-name [handler opts] ...)`,
+          note: "Flags middleware shape without guessing async or multi-arity policy."
+        },
+        {
+          id: "reitit/inline-route-handler",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Inline Reitit route handlers should be reviewed for named handler boundaries",
+          before: `["/health" {:get (fn [_] {:status 200 :body "ok"})}]`,
+          after: `suggested-source=["/path" {:get handler-fn}]`,
+          note: "Keeps route tables data-oriented and handlers testable."
+        },
+        {
+          id: "reitit/middleware-coercion-placement",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Reitit middleware and coercion placement should be reviewed together",
+          before: `{:middleware [wrap-auth]\n :coercion coercion}`,
+          after: `suggested-source={:coercion ... :middleware [...]}`,
+          note: "A placement warning for order-sensitive route data."
+        },
+        {
+          id: "reitit/frontend-rfx-dispatch-boundary",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "cljs",
+          tier: "llm-refactor",
+          message: "Frontend routing namespaces that dispatch RFX events should expose the routing/state boundary",
+          before: `(ns demo.router\n  (:require [reitit.frontend :as rfro]\n            [io.factorhouse.rfx.core :as rfx]))\n\n(defn navigate! [event]\n  (rfx/dispatch event))`,
+          after: `suggested-source=route match -> named navigation event`,
+          note: "Makes route-to-state coupling reviewable."
+        },
+        {
+          id: "integrant/init-halt-symmetry",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Integrant init-key methods should be reviewed for matching halt-key! ownership",
+          before: `(defmethod ig/init-key ::db [_ config]\n  (start-db config))`,
+          after: `suggested-source=(defmethod ig/halt-key! key [_ value] ...)`,
+          note: "Does not require halt for every component, but forces the lifecycle decision."
+        },
+        {
+          id: "integrant/config-key-namespace-alignment",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Integrant config keys should usually be namespaced to their component boundary",
+          before: `(defmethod ig/init-key :db [_ config]\n  (start-db config))`,
+          after: `suggested-source=::component-key`,
+          note: "Flags hidden global config keys before they spread."
+        },
+        {
+          id: "integrant/ref-graph-boundary",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Integrant refs should be reviewed for startup graph clarity and hidden global boundaries",
+          before: `{:app/server {:db (ig/ref :app/db)}}`,
+          after: `suggested-source=(ig/ref ::dependency)`,
+          note: "Turns graph shape into an explicit review object."
+        },
+        {
+          id: "integrant/module-expansion-shape",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Integrant expand-key methods should be reviewed for module boundary clarity",
+          before: `(defmethod ig/expand-key ::module [_ opts]\n  {:app/db opts})`,
+          after: `suggested-source=(defmethod ig/expand-key ::module [_ opts] ...)`,
+          note: "Flags hidden component responsibilities inside module expansion."
+        },
+        {
+          id: "malli/large-inline-schema",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Large inline Malli schemas should be reviewed for named reusable placement",
+          before: `[:map [:id int?] [:name string?] [:email string?]]`,
+          after: `suggested-source=(def UserSchema [:map ...])`,
+          note: "Separates domain schema ownership from IO-boundary schema ownership."
+        },
+        {
+          id: "malli/function-schema-instrumentation",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Malli function schemas should be reviewed with instrumentation and boundary policy",
+          before: `(m/=> #'create-user [:=> [:cat :map] :map])`,
+          after: `suggested-source=(m/=> #'var [:=> ...])`,
+          note: "Forces dev/test/prod instrumentation policy to be explicit."
+        },
+        {
+          id: "malli/registry-recursive-reference",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Malli registries and recursive references should be reviewed for stable names",
+          before: `{:registry {::user [:map [:friend [:ref ::user]]]}}`,
+          after: `suggested-source={:registry {...}} / [:ref ::schema]`,
+          note: "Targets navigable recursive schemas and stable registry names."
+        },
+        {
+          id: "schema/boundary-validation",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Schema validation calls should be reviewed for IO boundary placement",
+          before: `(m/validate UserSchema (:body request))`,
+          after: `suggested-source=(validate-at-boundary schema value)`,
+          note: "Makes validation placement a boundary decision, not an incidental call."
+        },
+        {
+          id: "reitit/malli-coercion-integration",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "Reitit routes with Malli parameters or responses should make coercion placement explicit",
+          before: `{:parameters {:body [:map [:id int?]]}}`,
+          after: `suggested-source={:coercion reitit.coercion.malli/coercion ...}`,
+          note: "Flags route data where coercion may be inherited but is not visible."
+        },
+        {
+          id: "http/schema-boundary-coupling",
+          family: "framework/contracts",
+          mode: "contract",
+          lang: "clj",
+          tier: "llm-refactor",
+          message: "HTTP handlers with inline schema validation should be reviewed for boundary coupling",
+          before: `(defn user-handler [request]\n  (m/validate UserSchema (:body request))\n  {:status 200 :body "ok"})`,
+          after: `suggested-source=named request/response schema boundary`,
+          note: "Targets handler readability without forcing extraction mechanically."
+        },
+        {
+          id: "profiles/framework-surface",
+          family: "profiles",
+          mode: "profile",
+          lang: "profile",
+          tier: "informational",
+          message: "Detect framework surfaces and attach canonical guidance",
+          before: `(ns app.mobile\n  (:require ["package:flutter/material.dart" :as m]\n            [cljd.flutter :as f]\n            [io.factorhouse.hsx.core :as hsx]\n            [io.factorhouse.rfx.core :as rfx]))`,
+          after: `ClojureDart category=mobile-ui\nHSX category=cljs-view\nRFX category=cljs-state\nframeworks=3`,
+          note: "Mostly informational today; framework-level forcing is still intentionally limited."
+        },
+        {
+          id: "protected/comment-sensitive",
+          family: "protected",
+          mode: "protected",
+          lang: "clj",
+          tier: "no-autofix",
+          message: "Comment-bearing forms are kept conservative",
+          before: `(when (not ready?) ; keep this note\n  (println :waiting))`,
+          after: `(when (not ready?) ; keep this note\n  (println :waiting))`,
+          note: "Protected when the rewrite is plausible but comment preservation is not good enough."
+        },
+        {
+          id: "protected/reader-sensitive",
+          family: "protected",
+          mode: "protected",
+          lang: "clj",
+          tier: "no-autofix",
+          message: "Syntax quote, unquote, unquote-splicing and reader discards are guarded",
+          before: "`(if ~test (do ~@body) nil)",
+          after: "`(if ~test (do ~@body) nil)",
+          note: "Protected because `do` can be structurally meaningful inside a macro template."
+        },
+        {
+          id: "clojuredart/type-metadata-tolerance",
+          family: "parser-survival",
+          mode: "protected",
+          lang: "cljd",
+          tier: "parse-tolerance",
+          message: "ClojureDart type metadata should not crash traversal",
+          before: `(defn animated\n  [& {:keys [^#/(m/Animation double) progress child]}]\n  (f/widget\n    :watch [v progress]\n    child))`,
+          after: `(defn animated\n  [& {:keys [^#/(m/Animation double) progress child]}]\n  (f/widget\n    :watch [v progress]\n    child))`,
+          note: "Traversal survives type metadata that is not readable as ordinary Clojure sexprs."
+        }
+      ];
+
+      const profiles = [
+        ["ClojureDart", "mobile-ui", "Detects cljd.flutter and package:flutter/... surfaces; also gates f/nest rewrites."],
+        ["HSX", "cljs-view", "Emits contracts for React function component and hooks-oriented style."],
+        ["RFX", "cljs-state", "Surfaces context-boundary and hook-usage guidance."],
+        ["re-frame", "cljs-state", "Guides event, effect, coeffect, and subscription responsibility boundaries."],
+        ["Reagent", "cljs-view", "Guides component view and state ownership boundaries."],
+        ["Ring", "http", "Guides handler, middleware, and response helper boundaries."],
+        ["Reitit", "routing", "Guides separation between route data and handler implementation."],
+        ["Integrant", "system", "Guides init/halt responsibility and config/runtime separation."],
+        ["Malli", "schema", "Guides validation at IO boundaries and schema placement."]
+      ];
+
+      const modeLabels = {
+        default: "default autofix",
+        aggressive: "guarded/aggressive",
+        contract: "contract",
+        profile: "profile",
+        protected: "protected"
+      };
+
+      const modeClass = {
+        default: "default",
+        aggressive: "aggressive",
+        contract: "contract",
+        profile: "profile",
+        protected: "protected"
+      };
+
+      const cardsEl = document.querySelector("#cards");
+      const matrixBody = document.querySelector("#matrix-body");
+      const profileEl = document.querySelector("#profiles");
+      const searchEl = document.querySelector("#search");
+      const modeEl = document.querySelector("#mode-filter");
+      const langEl = document.querySelector("#lang-filter");
+      const emptyEl = document.querySelector("#empty");
+
+      function textOf(pattern) {
+        return [
+          pattern.id,
+          pattern.family,
+          pattern.mode,
+          pattern.lang,
+          pattern.tier,
+          pattern.message,
+          pattern.before,
+          pattern.after,
+          pattern.note
+        ].join(" ").toLowerCase();
+      }
+
+      function escapeHtml(value) {
+        return value
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;");
+      }
+
+      function renderCard(pattern) {
+        const modeClassName = modeClass[pattern.mode] || "default";
+        return `<article class="card" data-search="${escapeHtml(textOf(pattern))}" data-mode="${pattern.mode}" data-lang="${pattern.lang}">
+          <div class="card-header">
+            <div class="card-title-row">
+              <h3>${escapeHtml(pattern.id)}</h3>
+              <span class="tag ${modeClassName}">${escapeHtml(modeLabels[pattern.mode] || pattern.mode)}</span>
+            </div>
+            <div class="card-tags">
+              <span class="mini-tag">${escapeHtml(pattern.family)}</span>
+              <span class="mini-tag">${escapeHtml(pattern.lang.toUpperCase())}</span>
+              <span class="mini-tag">${escapeHtml(pattern.tier)}</span>
+            </div>
+            <p class="message">${escapeHtml(pattern.message)}</p>
+          </div>
+          <div class="code-grid">
+            <div class="code-box">
+              <div class="code-label"><span>Before</span><span>${escapeHtml(pattern.lang)}</span></div>
+              <pre><code>${escapeHtml(pattern.before)}</code></pre>
+            </div>
+            <div class="code-box">
+              <div class="code-label"><span>After / Output</span><span>${escapeHtml(pattern.mode)}</span></div>
+              <pre><code>${escapeHtml(pattern.after)}</code></pre>
+            </div>
+          </div>
+          <div class="notes"><div><strong>Read:</strong> ${escapeHtml(pattern.note)}</div></div>
+        </article>`;
+      }
+
+      function renderMatrix() {
+        matrixBody.innerHTML = patterns.map((pattern) => `<tr>
+          <td>${escapeHtml(pattern.id)}</td>
+          <td>${escapeHtml(modeLabels[pattern.mode] || pattern.mode)}</td>
+          <td>${escapeHtml(pattern.tier)}</td>
+          <td>${escapeHtml(pattern.message)}</td>
+        </tr>`).join("");
+      }
+
+      function renderProfiles() {
+        profileEl.innerHTML = profiles.map(([name, category, guidance]) => `<div class="profile-item">
+          <h3>${escapeHtml(name)}</h3>
+          <p><strong>${escapeHtml(category)}</strong></p>
+          <p>${escapeHtml(guidance)}</p>
+        </div>`).join("");
+      }
+
+      function renderCards() {
+        cardsEl.innerHTML = patterns.map(renderCard).join("");
+        document.querySelector("#stat-patterns").textContent = String(patterns.length);
+        filterCards();
+      }
+
+      function filterCards() {
+        const query = searchEl.value.trim().toLowerCase();
+        const mode = modeEl.value;
+        const lang = langEl.value;
+        let visible = 0;
+        for (const card of cardsEl.querySelectorAll(".card")) {
+          const modeOk = mode === "all" || card.dataset.mode === mode;
+          const langOk = lang === "all" || card.dataset.lang === lang;
+          const queryOk = query === "" || card.dataset.search.includes(query);
+          const show = modeOk && langOk && queryOk;
+          card.classList.toggle("hidden", !show);
+          if (show) visible += 1;
+        }
+        emptyEl.style.display = visible === 0 ? "block" : "none";
+      }
+
+      searchEl.addEventListener("input", filterCards);
+      modeEl.addEventListener("change", filterCards);
+      langEl.addEventListener("change", filterCards);
+
+      renderMatrix();
+      renderProfiles();
+      renderCards();
+    </script>
+  </body>
+</html>

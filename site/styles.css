@@ -262,6 +262,14 @@ h3 {
   background: rgb(255 255 255 / 10%);
 }
 
+.button.inline-button {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 8px;
+  color: #fff;
+  background: var(--code);
+}
+
 .band {
   padding: clamp(72px, 9vw, 128px) clamp(18px, 5vw, 72px);
 }
@@ -295,6 +303,10 @@ h3 {
 .tool-band,
 .docs-band {
   background: #fff;
+}
+
+.capability-band {
+  background: #f8f7f2;
 }
 
 .section-heading {
